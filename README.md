@@ -4,16 +4,16 @@ Validar, compilar, minificar, otimizar imagens e enviar tudo isso para o ambient
 
 Imagino que você já tem o **Grunt** instalado na sua máquina. Para utilizá-lo execute os seguintes comandos:
 
-´´´
+```
 git clone git@github.com:mktvirtual/gruntfile.git gruntfile
 cd gruntfile
-´´´
+```
 
 Copie os arquivos package.json e Gruntfile.js para a pasta do seu projeto e instale os plugins do Grunt usando o seguinte comando dentro da pasta:
 
-´´´
+```
 npm install
-´´´
+```
 
 Após a instalação, edite o Gruntfile.js para atender as necessidades de cada projeto. Altere a variável paths, por exemplo, para adequar o arquivo à estruturação do seu projeto. Altere também o package.json, trocando para as suas informações.
 
