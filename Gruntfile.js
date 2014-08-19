@@ -14,14 +14,12 @@ module.exports = function( grunt ) {
 	}, // end uglify
 	
 	cssmin: {
-		minify: {
-			expand : true,
-			cwd: 'css/**',
-			src: ['*.css','!*.min.css'],
-			dest: 'build/assets/css/',
-			ext: '.css'
-		}
-	}, // end cssmin
+        dist: {
+            files: [
+                { src: 'build/assets/css/style.css', dest: 'build/assets/css/style.css' }
+            ]
+        }
+    }, // end cssmin
 
 	htmlmin: {
 			dist: {
@@ -43,13 +41,23 @@ module.exports = function( grunt ) {
                 src: '**/*.html',
                 dest: 'build/'
 			}]
-		}
+		} // end htmlmin
+	},	
+	uncss: {
+	    prod: {
+	        options: {
+	            htmlroot: 'build',
+	            report: 'gzip'
+	        },
+            files: [
+                { src: 'build/index.html', dest:'build/assets/css/style.css' }
+            ]
+	    } // end uncss
 	},
-
 	sass: {
 		dist: {
 			files: {
-			  'assets/css/style.css':'assets/sass/main.scss'
+			  'build/assets/css/style.css':'scss/main.scss'
 			}
 		}
 	}, // end sass
@@ -57,15 +65,14 @@ module.exports = function( grunt ) {
 	watch: {
       dist: {
         files: [
-          'assets/_js/**/*',
-          'assets/_sass/**/*'
+          'js/**/*',
+          'scss/**/*'
         ],
-        tasks: ['uglify','sass']
+        tasks: ['sass']
       }
     } // watch
 	
   });
-
 
   // Plugins do Grunt
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -73,9 +80,10 @@ module.exports = function( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-uncss');
 
   // Tarefas que serão executadas
   grunt.registerTask('compile',['sass']);
-  grunt.registerTask('minify',['uglify','cssmin','htmlmin']);
+  grunt.registerTask('minify',['htmlmin','uncss','uglify','cssmin']);
   grunt.registerTask('build',['compile','minify']);
 };
