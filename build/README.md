@@ -4,6 +4,7 @@ Neste diretório ficam todos os arquivos compilados pelas tarefas do Grunt.
 
 # nginx / .htaccess
 **nginx**
+
 Basta adicionar este snippet ao seu arquivo de configuração:
 
 ```
@@ -26,6 +27,7 @@ gzip_disable       "MSIE [1-6].(?!.*SV1)";
 
 
 **Apache**
+
 `.htaccess` é o arquivo de configuração que permite a configuração do servidor web. 
 
 Este documento inclui uma série de melhores regras do servidor prática para fazer páginas web rápido e seguro. Adaptado de (http://html5boilerplate.com/).
