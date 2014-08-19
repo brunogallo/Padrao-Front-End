@@ -17,6 +17,16 @@ npm install
 
 Após a instalação, edite o Gruntfile.js para atender as necessidades de cada projeto. Altere a variável paths, por exemplo, para adequar o arquivo à estruturação do seu projeto. Altere também o package.json, trocando para as suas informações.
 
+
+
+
+
+
+
+
+
+
+
 ## Contribua
 
 Você pode contribuir
