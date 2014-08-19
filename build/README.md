@@ -2,8 +2,31 @@
 Neste diretório ficam todos os arquivos compilados pelas tarefas do Grunt.
 
 
-# Configurando .htaccess
-No servidor Apache,`.htaccess` é o arquivo de configuração que permite a configuração do servidor web. 
+# nginx / .htaccess
+**nginx**
+Basta adicionar este snippet ao seu arquivo de configuração:
+
+```
+# turn on gzip
+gzip               on;
+gzip_http_version  1.1;
+gzip_vary          on;
+gzip_comp_level    6;
+gzip_proxied       any;
+
+# Define mime-types to be compressed
+gzip_types         text/html text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+
+# http://blog.leetsoft.com/2007/7/25/nginx-gzip-ssl
+gzip_buffers       16  8k;
+
+# turn off gzip for some browsers
+gzip_disable       "MSIE [1-6].(?!.*SV1)";
+```
+
+
+**Apache**
+`.htaccess` é o arquivo de configuração que permite a configuração do servidor web. 
 
 Este documento inclui uma série de melhores regras do servidor prática para fazer páginas web rápido e seguro. Adaptado de (http://html5boilerplate.com/).
 
