@@ -104,8 +104,19 @@ module.exports = function( grunt ) {
                 dest: 'build/assets/img'
             }]
         }
-    }
+    }, // end imagemin
     	
+	  connect: {
+	    server: {
+	      options: {
+	        port: 9001,
+	        hostname: '0.0.0.0',
+	        base: 'build',
+            keepalive: true
+	      }
+	    }
+	  } // end connect
+
   });
 
   // Plugins do Grunt
@@ -118,6 +129,7 @@ module.exports = function( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-pageres');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   
   // Tarefas que serão executadas
   grunt.registerTask('compile',['sass']);
