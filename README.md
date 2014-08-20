@@ -34,13 +34,13 @@ Após a instalação, edite o Gruntfile.js para atender as necessidades de cada 
 
 ## Práticas para utilização
 
-### Otimizar imagens
+#### Otimizar imagens
 Uma dica importante é utilizar **.jpgs** com **1.5x** o tamanho a ser mostrado, com **65-75% de qualidade**, **progressivos e otimizados com um algoritmo lossless**. 
 
 
 ## Contribua
 
-###Você pode contribuir
+####Você pode contribuir
 
 1. Crie um fork!
 2. Crie uma branch para a sua nova funcionalidae: `git checkout -b nova-funcionalidade`
