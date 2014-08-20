@@ -1,5 +1,8 @@
 # Padrão Front End
 
+
+## Resumo e instalação
+
 Validar, compilar, minificar, otimizar imagens e enviar tudo isso para o ambiente de produção são tarefas repetitivas. Utilizando o Grunt para automatizar toda essa parte chata, você fica só com a parte legal de desenvolver.
 
 Imagino que você já tem o **Grunt** instalado na sua máquina. Para utilizá-lo execute os seguintes comandos:
@@ -18,26 +21,26 @@ npm install
 Após a instalação, edite o Gruntfile.js para atender as necessidades de cada projeto. Altere a variável paths, por exemplo, para adequar o arquivo à estruturação do seu projeto. Altere também o package.json, trocando para as suas informações.
 
 
-## Plugins usados
+## Plugins utilizados
 
-**uglify** - Minifica todos os .js
-**cssmin** - Minifica todos os .css
-**htmlmin** - Minifica todos os .html
-**uncss** - Deleta todos os estilos não usados pelo html
-**clean** - Deleta todos os arquivos antes de compilar
-**sass** - Compila os arquivos scss
-**watch** - Procura alterações em tempo real
+- **uglify** - Minifica todos os .js
+- **cssmin** - Minifica todos os .css
+- **htmlmin** - Minifica todos os .html
+- **uncss** - Deleta todos os estilos não usados pelo html
+- **clean** - Deleta todos os arquivos antes de compilar
+- **sass** - Compila os arquivos scss
+- **watch** - Procura alterações em tempo real
 
 
-# Práticas para utilização
+## Práticas para utilização
 
-## Otimizar imagens
+### Otimizar imagens
 Uma dica importante é utilizar **.jpgs** com **1.5x** o tamanho a ser mostrado, com **65-75% de qualidade**, **progressivos e otimizados com um algoritmo lossless**. 
 
 
 ## Contribua
 
-Você pode contribuir
+###Você pode contribuir
 
 1. Crie um fork!
 2. Crie uma branch para a sua nova funcionalidae: `git checkout -b nova-funcionalidade`
