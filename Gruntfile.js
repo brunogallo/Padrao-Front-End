@@ -72,14 +72,40 @@ module.exports = function( grunt ) {
         ],
         tasks: ['sass']
       }
-    }, // watch
+    }, // end watch
     
 	clean: {
 	  build: {
-	    src: ['build/assets/**','build/*.html']
+	    src: ['build/assets/*/**.css','build/assets/*/**.js','build/*.html','teste/screenshot/**']
 	  }
-	}
+	}, // end clean
 	
+    pageres: {
+        prod: {
+            options: {
+                url: 'google.com.br',
+                sizes: ['240x427', '320x480', '480x320', '768x1024', '1024x768', 'iphone 5s', '1920x1080'],
+                crop: true,
+                dest: 'teste/screenshot'
+            }
+        }
+    }, // end pageres
+    
+    imagemin: {
+        prod: {
+            options: {
+                optimizationLevel: 7,
+                progressive: true
+            },
+            files: [{
+                expand: true,
+                cwd: 'build/assets/img',
+                src: '**/*.{png,jpg,gif}',
+                dest: 'build/assets/img'
+            }]
+        }
+    }
+    	
   });
 
   // Plugins do Grunt
@@ -90,9 +116,12 @@ module.exports = function( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-pageres');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
   
   // Tarefas que serão executadas
   grunt.registerTask('compile',['sass']);
-  grunt.registerTask('minify',['htmlmin','uncss','uglify','cssmin']);
+  grunt.registerTask('minify',['htmlmin','uncss','uglify','cssmin','imagemin']);
   grunt.registerTask('build',['clean','compile','minify']);
+  grunt.registerTask('deploy',['pageres']);
 };
