@@ -18,17 +18,21 @@ npm install
 Após a instalação, edite o Gruntfile.js para atender as necessidades de cada projeto. Altere a variável paths, por exemplo, para adequar o arquivo à estruturação do seu projeto. Altere também o package.json, trocando para as suas informações.
 
 
+## Plugins usados
+
+**uglify** - Minifica todos os .js
+**cssmin** - Minifica todos os .css
+**htmlmin** - Minifica todos os .html
+**uncss** - Deleta todos os estilos não usados pelo html
+**clean** - Deleta todos os arquivos antes de compilar
+**sass** - Compila os arquivos scss
+**watch** - Procura alterações em tempo real
+
+
 # Práticas para utilização
 
 ## Otimizar imagens
 Uma dica importante é utilizar **.jpgs** com **1.5x** o tamanho a ser mostrado, com **65-75% de qualidade**, **progressivos e otimizados com um algoritmo lossless**. 
-
-
-
-
-
-
-
 
 
 ## Contribua
