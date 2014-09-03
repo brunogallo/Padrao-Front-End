@@ -86,7 +86,7 @@ module.exports = function( grunt ) {
                 url: 'google.com.br',
                 sizes: ['240x427', '320x480', '480x320', '768x1024', '1024x768', 'iphone 5s', '1920x1080'],
                 crop: true,
-                dest: 'teste/screenshot'
+                dest: 'test/screenshot'
             }
         }
     }, // end pageres
@@ -104,18 +104,18 @@ module.exports = function( grunt ) {
                 dest: 'build/assets/img'
             }]
         }
-    }, // end imagemin
-    	
-	  connect: {
-	    server: {
-	      options: {
-	        port: 9001,
-	        hostname: '0.0.0.0',
-	        base: 'build',
-            keepalive: true
-	      }
-	    }
-	  } // end connect
+    }, // end imagemin	  
+	  
+	browserSync: {
+			bsFiles: {
+			src : 'build/**/*.*'
+		},
+		options: {
+			server: {
+				baseDir: "build"
+			}
+		}
+	}
 
   });
 
@@ -129,11 +129,12 @@ module.exports = function( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-pageres');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
-  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-browser-sync');
   
   // Tarefas que serão executadas
   grunt.registerTask('compile',['sass']);
   grunt.registerTask('minify',['htmlmin','uncss','uglify','cssmin','imagemin']);
   grunt.registerTask('build',['clean','compile','minify']);
-  grunt.registerTask('deploy',['pageres']);
+  grunt.registerTask('test',['pageres']);
+  grunt.registerTask('live', ["browserSync", "watch"]);
 };
