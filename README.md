@@ -23,24 +23,24 @@ Após a instalação, edite o Gruntfile.js para atender as necessidades de cada 
 
 ## Plugins utilizados
 
-- **uglify** 	- Minifica todos os .js
-- **cssmin** 	- Minifica todos os .css
-- **htmlmin** 	- Minifica todos os .html
-- **imagemin** 	- Minifica as imagens .jpg, .png e .gif
-- **uncss** 	- Deleta todos os estilos não usados pelo html
-- **clean** 	- Deleta todos os arquivos antes de compilar
-- **sass** 		- Compila os arquivos scss
-- **watch** 	- Procura alterações em tempo real
-- **pageres** 	- Tira print das páginas do site nas resoluções indicadas
-- **connect**	- Cria um servidor local
+- **uglify** 		- Minifica todos os .js
+- **cssmin** 		- Minifica todos os .css
+- **htmlmin** 		- Minifica todos os .html
+- **imagemin** 		- Minifica as imagens .jpg, .png e .gif
+- **uncss** 		- Deleta todos os estilos não usados pelo html
+- **clean** 		- Deleta todos os arquivos antes de compilar
+- **sass** 			- Compila os arquivos scss
+- **watch** 		- Procura alterações em tempo real
+- **pageres** 		- Tira print das páginas do site nas resoluções indicadas
+- **browsersync**	- Sincroniza browsers em tempo real
 
 
 ## Ambiente de testes
 
-Cria servidor local para testes, para conectar basta usar ip local da maquina com porta **:9001**
+Cria servidor local para testes no browser.
 
 ```
-grunt connect
+grunt live
 ```
 
 
