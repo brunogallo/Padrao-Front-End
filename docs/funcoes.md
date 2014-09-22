@@ -6,7 +6,6 @@ Algumas funções são baseadas na biblioteca do [bourbon](http://bourbon.io/).
 Essa função cria um grid flexível.
 
 ```css
-// As variáveis devem ser definidas no seu arquivo principal scss.
 $fg-column: 60px;             // Column Width
 $fg-gutter: 25px;             // Gutter Width
 $fg-max-columns: 12;          // Total Columns For Main Container
@@ -42,292 +41,86 @@ font-size: golden-ratio(14px,  1);
 font-size: golden-ratio(14px, -1);
 // returns: 8.653px
 ```
-//Resources: modularscale.com
+[Retirado de modularscale](http://modularscale.com)
 
 
 
-#### Animation-direction
-
-```css
-@include animation-direction(alternate-reverse);
-```
-
-
-
-#### Animation-duration
+#### Grid-width
+Facilida a criação de layouts baseados em grids.
 
 ```css
-@include animation-duration(2s);
-```
-
-
-
-#### Animation-fill-mode
-
-```css
-@include animation-fill-mode(backwards);
-```
-
-
-
-#### Animation-iteration-count
-
-```css
-@include animation-iteration-count(infinite);
-```
-
-
-
-#### Animation-name
-
-```css
-@include animation-name(scale, slide);
-```
-
-
-
-#### Animation-play-state
-
-```css
-@include animation-play-state(paused);
-```
-
-
-
-#### Animation-timing-function
-
-```css
-@include animation-timing-function(ease);
-```
-
-
-
-#### Appearance
-
-```css
-@include appearance(none);
-```
-
-
-
-#### Backface-visibility
-
-```css
-@include backface-visibility(visible);
-```
-
-
-
-#### Background
-
-```css
-@include background(linear-gradient(red, green) left repeat);
-@include background(linear-gradient(red, green) left repeat, radial-gradient(red, orange) left repeat);
-@include background(url("/images/a.png"), linear-gradient(red, green), center no-repeat orange scroll);
-```
-
-
-
-#### Background-image
-
-```css
-// Imagem com um layer em gradiente.
-@include background-image(url("/images/a.png"), linear-gradient(white 0, yellow 50%, transparent 50%));
-
-// Multiplos linear-gradients
-@include background-image(linear-gradient(hsla(0, 100%, 100%, 0.25) 0%, hsla(0, 100%, 100%, 0.08) 50%, transparent 50%),
-                           linear-gradient(#4e7ba3, darken(#4e7ba4, 10%)));
-
-// Não suportado
-@include background-image(url("/images/a.png") center no-repeat, url("images/b.png") left repeat);
-
-//Utilize dessa forma, ao invés do exemplo acima.
-@include background-image(url("/images/a.png"), url("images/b.png"));
-background-position: center top, center;
-background-repeat: no-repeat, repeat-x;
-```
-
-
-
-#### Border-image
-
-```css
-@include border-image(url(/images/border.png) 27 repeat);
-```
-
-
-
-#### Border-radius
-
-```css
-@include border-radius(5px);
-@include border-top-radius(5px);
-@include border-bottom-radius(5px);
-@include border-left-radius(5px);
-@include border-right-radius(5px);
-```
-
-
-
-#### Box-sizing
-
-```css
-@include box-sizing(border-box);
-```
-
-
-
-#### Calc
-
-```css
-@include calc(width, '100% - 80px');
-Atenção: Para passar o valor de uma variável, você precisa usar interpolação.—#{ }.
-$width: 100%;
-
-@include calc(width, '#{$width} - 80px');
-```
-
-
-
-#### Columns
-
-```css
-@include columns(12 8em);
-@include column-rule(1px solid green);
-```
-
-
-
-#### Filter
-
-```css
-@include filter(grayscale(50%));
-```
-
-
-
-#### Flexbox
-
-```css
-div.parent {
-  @include display(flex);
-  @include align-items(stretch);
-  @include flex-direction(row);
-  @include justify-content(flex-start);
-}
-
-div.parent > div.child {
-  @include flex(1);
+$gw-column: 100px;          // Column Width
+$gw-gutter: 40px;           // Gutter Width
+
+div {
+  width: grid-width(4);     // returns 520px;
+  margin-left: $gw-gutter;  // returns 40px;
 }
 ```
-
-
-
-#### Font-face
-
-```css
-@include font-face(SourceSansPro, '/fonts/Source_Sans_Pro/SourceSansPro-Regular');
-@include font-face(SourceSansPro, '/fonts/Source_Sans_Pro/SourceSansPro-Bold', bold);
-@include font-face(SourceSansPro, '/fonts/Source_Sans_Pro/SourceSansPro-Italic', normal, italic);
-
-// Rails asset-pipeline - place fonts in app/assets/fonts/
-@include font-face(SourceSansPro, 'Source_Sans_Pro/SourceSansPro-Regular', normal, $asset-pipeline: true);
-```
-
-
-
-#### Font-feature-settings
-
-```css
-@include font-feature-settings("liga");
-@include font-feature-settings("pnum", "kern" false);
-```
-
-
-
-#### HiDPI Media Query
-
-```css
-@include hidpi(1.5) {
-  width: 260px;
-}
-```
-
-***CSS Output***
-
-```css
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-only screen and (min--moz-device-pixel-ratio: 1.5),
-only screen and (-o-min-device-pixel-ratio: 1.5/1),
-only screen and (min-resolution: 144dpi),
-only screen and (min-resolution: 1.5dppx) {
-  width: 260px;
-}
-```
-
-
-
-#### Hyphens
-
-```css
-@include hyphens(manual);
-```
-
-
-
-#### Image-rendering
-
-```css
-@include image-rendering(optimizeSpeed);
-```
-
-
-
-#### Keyframes
-
-```css
-@include keyframes(fadeIn) {
-  from {
-    @include transform(scale(0));
-  }
-  to {
-    @include transform(scale(1));
-  }
-}
-```
-
+[Retirado de gridulator](http://gridulator.com)
 
 
 #### Linear-gradient
 
 ```css
-@include linear-gradient(#1e5799, #2989d8);
-@include linear-gradient(to top, #8fdce5, #3dc3d1);
-@include linear-gradient(to top, #8fdce5, #3dc3d1, $fallback: red);
-@include linear-gradient(50deg, #1e5799 0%, #2989d8 50%, #207cca 51%, #7db9e8 100%);
+@include background-image(linear-gradient(white 0, yellow 50%, transparent 50%));
 ```
 
 
 
-#### Perspective
+#### Modular-scale
+Retorna a escala modular do número fornecido. Primeiro valor: Número. Segundo valor: incremento ou decremento ...-3, -2, -1, 0, 1, 2, 3... Terceiro valor: ratio.
 
 ```css
-@include perspective(300px);
-@include perspective-origin(30% 30%);
-```
+// Scaling Variables
+$golden:           1.618;
+$minor-second:     1.067;
+$major-second:     1.125;
+$minor-third:      1.2;
+$major-third:      1.25;
+$perfect-fourth:   1.333;
+$augmented-fourth: 1.414;
+$perfect-fifth:    1.5;
+$minor-sixth:      1.6;
+$major-sixth:      1.667;
+$minor-seventh:    1.778;
+$major-seventh:    1.875;
+$octave:           2;
+$major-tenth:      2.5;
+$major-eleventh:   2.667;
+$major-twelfth:    3;
+$double-octave:    4;
 
+div {
+ // Increment Up GR with positive value
+ font-size:        modular-scale(14px,   1, 1.618); // returns: 22.652px
 
+ // Increment Down GR with negative value
+ font-size:        modular-scale(14px,  -1, 1.618); // returns: 8.653px
 
-#### Placeholder
-
-```css
-input {
-  width: 300px;
-
-  @include placeholder {
-    color: red;
-  }
+ // Can be used with ceil(round up) or floor(round down)
+ font-size: floor( modular-scale(14px, 1, 1.618) ); // returns: 22px
+ font-size:  ceil( modular-scale(14px, 1, 1.618) ); // returns: 23px
 }
+```
+[Retirado de modularscale](http://modularscale.com) e [Retirado de goldenrationcalculator](http://goldenrationcalculator.com)
+
+
+#### Em
+Converte pixel para em.
+
+```css
+font-size: em(12);
+font-size: em(12, 24);
+```
+
+
+
+#### Rem
+Converte pixel para rem.
+
+```css
+font-size: rem(12);
 ```
 
 
@@ -335,38 +128,42 @@ input {
 #### Radial-gradient
 
 ```css
-@include radial-gradient(#1e5799, #3dc3d1);
-@include radial-gradient(#1e5799, #3dc3d1, $fallback: red);
-@include radial-gradient(circle at 50% 50%, #eee 10%, #1e5799 30%, #efefef);
+@include background-image( radial-gradient(#1e5799, #3dc3d1) );
+@include background-image( radial-gradient(50% 50%, circle cover, #1e5799, #3dc3d1) );
+@include background-image( radial-gradient(50% 50%, circle cover, #eee 10%, #1e5799 30%, #efefef) );
 ```
 
 
 
-#### Transform
+#### Strip-units
+Isola um valor, no código abaixo, ela retorna apenás o número 12.
 
 ```css
-@include transform(translateY(50px));
-@include transform-origin(center top);
-@include transform-style(preserve-3d);
+$dimension: strip-units(12px);
 ```
 
 
 
-#### Transition
+#### Tint & Shade
+Tint e Shade é uma função diferente de lighten() e darken() do sass.
+
+Tint é um mix com a cor branca.
+Shade é um mix com a cor preta.
 
 ```css
-@include transition (all 2.0s ease-in-out);
-@include transition (opacity 1.0s ease-in 0s, width 2.0s ease-in 2s);
-@include transition-property (transform);
-@include transition-duration(1.0s);
-@include transition-timing-function(ease-in);
-@include transition-delay(0.5s);
+background: tint(red, 40%);
+background: shade(blue, 60%);
 ```
 
 
 
-#### User-select
+#### Unpack
 
 ```css
-@include user-select(none);
+margin: unpack(1em 2em);
+```
+
+***CSS Output***
+```css
+margin: 1em 2em 1em 2em;
 ```
