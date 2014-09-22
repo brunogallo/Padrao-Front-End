@@ -35,6 +35,13 @@ Após a instalação, edite o Gruntfile.js para atender as necessidades de cada 
 - **browsersync**	- Sincroniza browsers em tempo real
 
 
+## Utilização
+
+[Mixins](http://www.brunogallo.com.br/padrao-front-end/mixins.html)
+[Funções](http://www.brunogallo.com.br/padrao-front-end/funcoes.html)
+[Add-ons](http://www.brunogallo.com.br/padrao-front-end/addons.html)
+[Configuração](http://www.brunogallo.com.br/padrao-front-end/configuracoes.html)
+
 ## Ambiente de testes
 
 Cria servidor local para testes no browser.
