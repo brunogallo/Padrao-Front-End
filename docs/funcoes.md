@@ -1,28 +1,48 @@
-# Mixins
-Alguns mixins são baseados na biblioteca do [bourbon](http://bourbon.io/).
+# Funções
+Algumas funções são baseadas na biblioteca do [bourbon](http://bourbon.io/).
 
 
-#### Animation
+#### Flex-grid
+Essa função cria um grid flexível.
 
 ```css
-box:hover {
-  @include animation(scale 1.0s ease-in, slide 2.0s ease);
+// As variáveis devem ser definidas no seu arquivo principal scss.
+$fg-column: 60px;             // Column Width
+$fg-gutter: 25px;             // Gutter Width
+$fg-max-columns: 12;          // Total Columns For Main Container
 
-  // Os mixins abaixo podem ser usados de forma independente.
-  @include animation-name(scale, slide);
-  @include animation-duration(2s);
-  @include animation-timing-function(ease);
-  @include animation-iteration-count(infinite);
+div {
+  width: flex-grid(4);        // returns (315px / 1020px) = 30.882353%;
+  margin-left: flex-gutter(); // returns (25px / 1020px) = 2.45098%;
+
+  p {
+    width: flex-grid(2, 4);   // returns (145px / 315px) = 46.031746%;
+    float: left;
+    margin: flex-gutter(4);   // returns (25px / 315px) = 7.936508%;
+  }
+
+  blockquote {
+    float: left;
+    width: flex-grid(2, 4);   // returns (145px / 315px) = 46.031746%;
+  }
 }
 ```
 
 
 
-#### Animation-delay
+#### Golden-ratio
+Retorna o golden ratio de um número fornecido. Pixel para o primeiro valor. Valor integer para incremento e decremento: ...-3, -2, -1, 0, 1, 2, 3...
 
 ```css
-@include animation-delay(2s);
+// Número positivo da incremento.
+font-size: golden-ratio(14px,  1);
+// returns: 22.652px
+
+// Número negativo da decremento.
+font-size: golden-ratio(14px, -1);
+// returns: 8.653px
 ```
+//Resources: modularscale.com
 
 
 
