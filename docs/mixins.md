@@ -37,10 +37,10 @@ Após a instalação, edite o Gruntfile.js para atender as necessidades de cada 
 
 ## Utilização
 
-- [Mixins](/docs/mixins.md)
-- [Funções](/docs/funcoes.md)
-- [Add-ons](/docs/addons.md)
-- [Configuração](/docs/configuracao.md)
+- [Mixins](http://brunogallo.com.br/padrao-front-end/mixins.html)
+- [Funções](http://brunogallo.com.br/padrao-front-end/funcoes.html)
+- [Add-ons](http://brunogallo.com.br/padrao-front-end/addons.html)
+- [Configuração](http://brunogallo.com.br/padrao-front-end/configuracoes.html)
 
 ## Ambiente de testes
 
