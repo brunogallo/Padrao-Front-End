@@ -17,11 +17,13 @@ box:hover {
 ```
 
 
+
 ### Animation-delay
 
 ```css
 @include animation-delay(2s);
 ```
+
 
 
 ### Animation-direction
@@ -31,11 +33,13 @@ box:hover {
 ```
 
 
+
 ### Animation-duration
 
 ```css
 @include animation-duration(2s);
 ```
+
 
 
 ### Animation-fill-mode
@@ -45,11 +49,13 @@ box:hover {
 ```
 
 
+
 ### Animation-iteration-count
 
 ```css
 @include animation-iteration-count(infinite);
 ```
+
 
 
 ### Animation-name
@@ -59,11 +65,13 @@ box:hover {
 ```
 
 
+
 ### Animation-play-state
 
 ```css
 @include animation-play-state(paused);
 ```
+
 
 
 ### Animation-timing-function
@@ -73,11 +81,13 @@ box:hover {
 ```
 
 
+
 ### Appearance
 
 ```css
 @include appearance(none);
 ```
+
 
 
 ### Backface-visibility
@@ -87,6 +97,7 @@ box:hover {
 ```
 
 
+
 ### Background
 
 ```css
@@ -94,6 +105,7 @@ box:hover {
 @include background(linear-gradient(red, green) left repeat, radial-gradient(red, orange) left repeat);
 @include background(url("/images/a.png"), linear-gradient(red, green), center no-repeat orange scroll);
 ```
+
 
 
 ### Background-image
@@ -116,11 +128,13 @@ background-repeat: no-repeat, repeat-x;
 ```
 
 
+
 ### Border-image
 
 ```css
 @include border-image(url(/images/border.png) 27 repeat);
 ```
+
 
 
 ### Border-radius
@@ -134,11 +148,13 @@ background-repeat: no-repeat, repeat-x;
 ```
 
 
+
 ### Box-sizing
 
 ```css
 @include box-sizing(border-box);
 ```
+
 
 
 ### Calc
@@ -152,6 +168,7 @@ $width: 100%;
 ```
 
 
+
 ### Columns
 
 ```css
@@ -160,11 +177,13 @@ $width: 100%;
 ```
 
 
+
 ### Filter
 
 ```css
 @include filter(grayscale(50%));
 ```
+
 
 
 ### Flexbox
@@ -183,6 +202,7 @@ div.parent > div.child {
 ```
 
 
+
 ### Font-face
 
 ```css
@@ -195,12 +215,14 @@ div.parent > div.child {
 ```
 
 
+
 ### Font-feature-settings
 
 ```css
 @include font-feature-settings("liga");
 @include font-feature-settings("pnum", "kern" false);
 ```
+
 
 
 ### HiDPI Media Query
@@ -224,6 +246,7 @@ only screen and (min-resolution: 1.5dppx) {
 ```
 
 
+
 ### Hyphens
 
 ```css
@@ -231,11 +254,13 @@ only screen and (min-resolution: 1.5dppx) {
 ```
 
 
+
 ### Image-rendering
 
 ```css
 @include image-rendering(optimizeSpeed);
 ```
+
 
 
 ### Keyframes
@@ -252,6 +277,7 @@ only screen and (min-resolution: 1.5dppx) {
 ```
 
 
+
 ### Linear-gradient
 
 ```css
@@ -262,12 +288,14 @@ only screen and (min-resolution: 1.5dppx) {
 ```
 
 
+
 ### Perspective
 
 ```css
 @include perspective(300px);
 @include perspective-origin(30% 30%);
 ```
+
 
 
 ### Placeholder
@@ -283,6 +311,7 @@ input {
 ```
 
 
+
 ### Radial-gradient
 
 ```css
@@ -292,6 +321,7 @@ input {
 ```
 
 
+
 ### Transform
 
 ```css
@@ -299,6 +329,7 @@ input {
 @include transform-origin(center top);
 @include transform-style(preserve-3d);
 ```
+
 
 
 ### Transition
@@ -311,6 +342,7 @@ input {
 @include transition-timing-function(ease-in);
 @include transition-delay(0.5s);
 ```
+
 
 
 ### User-select
