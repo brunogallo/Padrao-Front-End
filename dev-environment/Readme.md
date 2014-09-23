@@ -38,9 +38,27 @@ Na primeira inicialização será feito o download da imagem do ambiente.
 - ***vagrant ssh***			- Conecta via ssh.
 - ***vagrant update***	- Atualiza o vagrant.
 - ***vagrant list***		- Lista ambientes.
+- ***vagrant provision***	- Caso faça alguma alteração no "puphpet/config.yaml" o comando atualiza.
 
 
 Por padrão, o grunt publica os arquivos compilados com "grunt stage" dentro da pasta var/www/.
+
+
+###Web server
+
+A task stage configurada no grunt envia os arquivos compilados para o ambiente de teste.
+Caso seja necessário alterações de forma manual, os arquivos devem ser colocados em: "dev-environment/sistema-operacional/www".
+
+***URL*** - http://192.168.56.101/
+
+
+###MySQL
+
+- ***DB User:*** padrao
+- ***DB PW:*** padrao
+- ***DB:*** padrao
+
+***URL*** - http://192.168.56.101/adminer/
 
 
 ## Especificações do ambiente
@@ -50,10 +68,10 @@ Todas os ambientes foram configurados com alguns valores padrões:
 - ***Usuários:*** padrao
 - ***Senhas:*** padrao
 - ***Memória:*** 1GB
+- ***Local VM CPU's***: 1
 - ***IP:*** 192.168.56.101
 - ***Porta box:*** 22
 - ***Porta Apache:*** 80
-- ***Porta host:***	8623
 - ***Pasta compartilhada:*** /www Apontada para: /var/www
 - ***Modulos Apache:*** rewrite, mod_pagespeed.
 - ***Servername:*** padrao
@@ -62,7 +80,7 @@ Todas os ambientes foram configurados com alguns valores padrões:
 
 Sistema Operacional|Modulos|Caminho|
 --------|--------|--------|--------|
-Ubuntu Precise 12.04 LTS x64|PHP, Apache, MySQL, Rsync|/ubuntu|
+Ubuntu Trusty 14.04 LTS x64|PHP, Xdebug, Apache, MySQL, Nodejs, Adminer, Rsync, MailCatcher|/ubuntu|
 
 
 ## Possiveis erros e soluções

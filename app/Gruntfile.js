@@ -141,7 +141,7 @@ module.exports = function( grunt ) {
 	        options: {
 	            src: "build/dist/",
 	            dest: "/var/www/",
-	            host: "user@staging-host",
+	            host: "192.168.56.101",
 	            delete: true // Careful this option could cause data loss, read the docs!
 	        }
 	    },
@@ -192,6 +192,6 @@ module.exports = function( grunt ) {
   grunt.registerTask('validate',['jshint', 'validation']);	// Valida arquivos js e html.
   grunt.registerTask('live', ["browserSync", "watch"]);	// Sincroniza browser com diferentes dispositivos.
 
-  grunt.registerTask('stage', ['build', 'validate', 'rsync:stage']);	// Executa todas as tarefas e envia para o ambiente de desenvolvimento.
+  grunt.registerTask('stage', ['build','rsync:stage']);	// Executa todas as tarefas e envia para o ambiente de desenvolvimento.
   grunt.registerTask('deploy', ['build', 'rsync:prod', 'print', 'test']);	// Da deploy e envia para o ambiente de produção.
 };
