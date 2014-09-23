@@ -1,4 +1,4 @@
-#ambiente de desenvolvimento
+#Ambiente de desenvolvimento
 
 ## Resumo e instalação
 
@@ -45,22 +45,29 @@ Por padrão, o grunt publica os arquivos compilados com "grunt stage" dentro da 
 
 ## Especificações do ambiente
 
+Todas os ambientes foram configurados com alguns valores padrões:
 
-Sistema Operacional|Modulos|Porta|Compartilhamento|Portas abertas|Senha Padrão|
---------|--------|--------|--------|--------|--------|
-Ubuntu Precise 12.04 LTS x64|PHP, Apache, MySQL, Rsync|80|/dev-environment/www/|22|padrao|
+Usuários: padrao
+Senhas: padrao
+Memória: 1GB
+IP: 192.168.56.101
+Porta box: 22
+Porta Apache: 80
+Porta host:	8623
+Pasta compartilhada: /www Apontada para: /var/www
+Modulos Apache: rewrite, mod_pagespeed.
+Servername: padrao
+Server Alias: brunogallo.com
+
+
+Sistema Operacional|Modulos|Caminho|
+--------|--------|--------|--------|
+Ubuntu Precise 12.04 LTS x64|PHP, Apache, MySQL, Rsync|/ubuntu|
 
 
 ## Possiveis erros e soluções
 
-- **warning: Insecure world writable dir /usr/local in PATH**
-- **Solução:** sudo chmod 775 /usr/local
-
-
-
-
-
-
+- **Warning: Insecure world writable dir /usr/local in PATH** - **Solução:** sudo chmod 775 /usr/local
 
 
 ## Quer me ajudar?

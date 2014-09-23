@@ -40,14 +40,14 @@ Após a instalação, edite o Gruntfile.js para atender as necessidades de cada 
 ## Utilização
 
 ***Tarefas***
-- **grunt compile		- Compila os arquivos .scss
-- **grunt minify		- Minifica o html, css, js e optimiza as imagens.
-- **grunt build			- Executa as tarefas de minificar, limpar o diretório e compilar. 
-- **grunt print			- Tira print das páginas nas principais resoluções mobile.
-- **grunt validate		- Valida o código dos arquivos js e html.
-- **grunt live			- Sincroniza browser com diferentes dispositivos.
-- **grunt stage			- Executa todas as tarefas e envia para o ambiente de desenvolvimento.
-- **grunt deploy		- Da deploy e envia para o ambiente de produção.
+- **grunt compile**		- Compila os arquivos .scss
+- **grunt minify**		- Minifica o html, css, js e optimiza as imagens.
+- **grunt build**			- Executa as tarefas de minificar, limpar o diretório e compilar. 
+- **grunt print**			- Tira print das páginas nas principais resoluções mobile.
+- **grunt validate**		- Valida o código dos arquivos js e html.
+- **grunt live**			- Sincroniza browser com diferentes dispositivos.
+- **grunt stage**		- Executa todas as tarefas e envia para o ambiente de desenvolvimento.
+- **grunt deploy**		- Da deploy e envia para o ambiente de produção.
 
 
 ***SASS***
@@ -60,7 +60,7 @@ Após a instalação, edite o Gruntfile.js para atender as necessidades de cada 
 
 ## Ambiente de testes
 
-- [Clique aqui](/dev-environment/readme.me) para conhecer como é utilizado o ambiente através do vagrant.
+- [Clique aqui](dev-environment/readme.me) para conhecer como é utilizado o ambiente através do vagrant.
 
 
 ## Práticas para utilização
