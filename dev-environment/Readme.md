@@ -47,17 +47,17 @@ Por padrão, o grunt publica os arquivos compilados com "grunt stage" dentro da 
 
 Todas os ambientes foram configurados com alguns valores padrões:
 
-Usuários: padrao
-Senhas: padrao
-Memória: 1GB
-IP: 192.168.56.101
-Porta box: 22
-Porta Apache: 80
-Porta host:	8623
-Pasta compartilhada: /www Apontada para: /var/www
-Modulos Apache: rewrite, mod_pagespeed.
-Servername: padrao
-Server Alias: brunogallo.com
+- ***Usuários:*** padrao
+- ***Senhas:*** padrao
+- ***Memória:*** 1GB
+- ***IP:*** 192.168.56.101
+- ***Porta box:*** 22
+- ***Porta Apache:*** 80
+- ***Porta host:***	8623
+- ***Pasta compartilhada:*** /www Apontada para: /var/www
+- ***Modulos Apache:*** rewrite, mod_pagespeed.
+- ***Servername:*** padrao
+- ***Server Alias:*** brunogallo.com
 
 
 Sistema Operacional|Modulos|Caminho|
@@ -67,7 +67,7 @@ Ubuntu Precise 12.04 LTS x64|PHP, Apache, MySQL, Rsync|/ubuntu|
 
 ## Possiveis erros e soluções
 
-- **Warning: Insecure world writable dir /usr/local in PATH** - **Solução:** sudo chmod 775 /usr/local
+- ***Warning: Insecure world writable dir /usr/local in PATH*** - ***Solução:*** sudo chmod 775 /usr/local
 
 
 ## Quer me ajudar?
@@ -75,3 +75,4 @@ Ubuntu Precise 12.04 LTS x64|PHP, Apache, MySQL, Rsync|/ubuntu|
 ***Implementações pendentes***
 
 - ***Vivenciando o deploy antes do deploy***	- http://www.youtube.com/watch?v=sPqbYfmo0ec
+- ***APP Trafic replay*** - https://github.com/buger/gor/

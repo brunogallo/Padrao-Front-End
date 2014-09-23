@@ -60,7 +60,7 @@ Após a instalação, edite o Gruntfile.js para atender as necessidades de cada 
 
 ## Ambiente de testes
 
-- [Clique aqui](dev-environment/readme.me) para conhecer como é utilizado o ambiente através do vagrant.
+- [Clique aqui](dev-environment/Readme.md) para conhecer como é utilizado o ambiente através do vagrant.
 
 
 ## Práticas para utilização
