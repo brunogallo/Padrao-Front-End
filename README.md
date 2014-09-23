@@ -34,7 +34,7 @@ Após a instalação, edite o Gruntfile.js para atender as necessidades de cada 
 - **pageres** 			- Tira print das páginas do site nas resoluções indicadas.
 - **browsersync**		- Sincroniza browsers em tempo real.
 - **jshint**			- Valida os códigos js.
-- **w3c validation**	- Valida os códigos html e css.
+- **validation**		- Valida os códigos html.
 - **rsync**				- Sincroniza com o servidor ftp.
 
 ## Utilização
@@ -60,12 +60,8 @@ Após a instalação, edite o Gruntfile.js para atender as necessidades de cada 
 
 ## Ambiente de testes
 
-Cria servidor local para testes no browser.
+- [Clique aqui](/dev-environment/readme.me) para conhecer como é utilizado o ambiente através do vagrant.
 
-```
-grunt live
-```
-eu, erick, hil, amigo hil, andrey, lincoln, leo, ivan, luacs, amigo lucas, rafa, 
 
 ## Práticas para utilização
 
