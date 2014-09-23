@@ -23,24 +23,40 @@ Após a instalação, edite o Gruntfile.js para atender as necessidades de cada 
 
 ## Plugins utilizados
 
-- **uglify** 		- Minifica todos os .js
-- **cssmin** 		- Minifica todos os .css
-- **htmlmin** 		- Minifica todos os .html
-- **imagemin** 		- Minifica as imagens .jpg, .png e .gif
-- **uncss** 		- Deleta todos os estilos não usados pelo html
-- **clean** 		- Deleta todos os arquivos antes de compilar
-- **sass** 			- Compila os arquivos scss
-- **watch** 		- Procura alterações em tempo real
-- **pageres** 		- Tira print das páginas do site nas resoluções indicadas
-- **browsersync**	- Sincroniza browsers em tempo real
-
+- **uglify** 			- Minifica todos os .js.
+- **cssmin** 			- Minifica todos os .css.
+- **htmlmin** 			- Minifica todos os .html.
+- **imagemin** 			- Minifica as imagens .jpg, .png e .gif.
+- **uncss** 			- Deleta todos os estilos não usados pelo html.
+- **clean** 			- Deleta todos os arquivos antes de compilar.
+- **sass** 				- Compila os arquivos scss.
+- **watch** 			- Procura alterações em tempo real.
+- **pageres** 			- Tira print das páginas do site nas resoluções indicadas.
+- **browsersync**		- Sincroniza browsers em tempo real.
+- **jshint**			- Valida os códigos js.
+- **w3c validation**	- Valida os códigos html e css.
+- **rsync**				- Sincroniza com o servidor ftp.
 
 ## Utilização
+
+***Tarefas***
+- **grunt compile		- Compila os arquivos .scss
+- **grunt minify		- Minifica o html, css, js e optimiza as imagens.
+- **grunt build			- Executa as tarefas de minificar, limpar o diretório e compilar. 
+- **grunt print			- Tira print das páginas nas principais resoluções mobile.
+- **grunt validate		- Valida o código dos arquivos js e html.
+- **grunt live			- Sincroniza browser com diferentes dispositivos.
+- **grunt stage			- Executa todas as tarefas e envia para o ambiente de desenvolvimento.
+- **grunt deploy		- Da deploy e envia para o ambiente de produção.
+
+
+***SASS***
 
 - [Mixins](/docs/mixins.md)
 - [Funções](/docs/funcoes.md)
 - [Add-ons](/docs/addons.md)
 - [Configuração](/docs/configuracao.md)
+
 
 ## Ambiente de testes
 
@@ -49,7 +65,7 @@ Cria servidor local para testes no browser.
 ```
 grunt live
 ```
-
+eu, erick, hil, amigo hil, andrey, lincoln, leo, ivan, luacs, amigo lucas, rafa, 
 
 ## Práticas para utilização
 

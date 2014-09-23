@@ -6,7 +6,7 @@ module.exports = function( grunt ) {
 		options: {
 			mangle: false
 		},
-		my_target: {
+		dist: {
 			files: {
 				'build/assets/js/javascript.js':['js/main.js']
 			}
@@ -22,7 +22,7 @@ module.exports = function( grunt ) {
     }, // end cssmin
     
 	uncss: {
-	    prod: {
+	    dist: {
 	        options: {
 	            htmlroot: 'build',
 	            report: 'gzip'
@@ -92,7 +92,7 @@ module.exports = function( grunt ) {
     }, // end pageres
     
     imagemin: {
-        prod: {
+        dist: {
             options: {
                 optimizationLevel: 7,
                 progressive: true
@@ -113,28 +113,85 @@ module.exports = function( grunt ) {
 		options: {
 			server: {
 				baseDir: "build"
-			}
-		}
+			},
+            reloadDelay: 1000,
+            ghostMode: {
+				scroll: true,
+				links: true,
+				forms: true,
+				clicks: true,
+				location: true
+            }
+        }
+	}, //end browser sync
+	rsync: {
+	    options: {
+	        args: ['--verbose', '--chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r'],
+	        exclude: [".git*","*.scss","node_modules"],
+	        recursive: true,
+            compareMode: 'checksum'
+	    },
+	    dist: {
+	        options: {
+	            src: "build",
+	            dest: "build/dist"
+	        }
+	    },
+	    stage: { //Servidor de testes
+	        options: {
+	            src: "build/dist/",
+	            dest: "/var/www/",
+	            host: "user@staging-host",
+	            delete: true // Careful this option could cause data loss, read the docs!
+	        }
+	    },
+	    prod: { //Servidor de produção
+	        options: {
+	            src: "build/dist",
+	            dest: "/var/www/",
+	            host: "user@live-host",
+	            delete: true // Careful this option could cause data loss, read the docs!
+	        }
+	    }
+	}, // end rsync
+	jshint: {
+		all: ['Gruntfile.js', 'js/*.js', 'build/assets/js/*.js']
+	}, //end jshint
+	validation: {
+	    options: {
+	        reset: grunt.option('reset') || false,
+	        stoponerror: false
+	    },
+	    files: {
+	        src: ['html/*.html', 'build/*.html']
+	    }
 	}
-
   });
 
   // Plugins do Grunt
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.loadNpmTasks('grunt-uncss');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-pageres');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  
+  grunt.loadNpmTasks('grunt-html-validation');
   grunt.loadNpmTasks('grunt-browser-sync');
+  grunt.loadNpmTasks('grunt-rsync-2');
+  grunt.loadNpmTasks('grunt-pageres');
+  grunt.loadNpmTasks('grunt-uncss');
   
   // Tarefas que serão executadas
-  grunt.registerTask('compile',['sass']);
-  grunt.registerTask('minify',['htmlmin','uncss','uglify','cssmin','imagemin']);
-  grunt.registerTask('build',['clean','compile','minify']);
-  grunt.registerTask('test',['pageres']);
-  grunt.registerTask('live', ["browserSync", "watch"]);
+  grunt.registerTask('compile',['sass']);	// Compila os arquivos .scss
+  grunt.registerTask('minify',['htmlmin', 'uncss', 'uglify', 'cssmin', 'imagemin']);	// Minifica o html, css, js e optimiza as imagens.
+  grunt.registerTask('build',['clean', 'compile', 'minify']);	// Executa as tarefas de minificar, limpar o diretório e compilar. 
+  grunt.registerTask('print',['pageres']);	// Tira print das páginas nas principais resoluções mobile.
+  grunt.registerTask('validate',['jshint', 'validation']);	// Valida arquivos js e html.
+  grunt.registerTask('live', ["browserSync", "watch"]);	// Sincroniza browser com diferentes dispositivos.
+
+  grunt.registerTask('stage', ['build', 'validate', 'rsync:stage']);	// Executa todas as tarefas e envia para o ambiente de desenvolvimento.
+  grunt.registerTask('deploy', ['build', 'rsync:prod', 'print', 'test']);	// Da deploy e envia para o ambiente de produção.
 };
