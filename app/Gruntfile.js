@@ -1,171 +1,169 @@
+'use-strict';
+
 module.exports = function( grunt ) {
 
   grunt.initConfig({
-
-	uglify: {
-		options: {
-			mangle: false
-		},
-		dist: {
-			files: {
-				'build/assets/js/javascript.js':['js/main.js']
-			}
-		}
-	}, // end uglify
-	
-	cssmin: {
-        dist: {
-            files: [
-                { src: 'build/assets/css/style.css', dest: 'build/assets/css/style.css' }
-            ]
-        }
-    }, // end cssmin
-    
-	uncss: {
-	    dist: {
-	        options: {
-	            htmlroot: 'build',
-	            report: 'gzip'
-	        },
-            files: [
-                { src: 'build/index.html', dest:'build/assets/css/style.css' }
-            ]
-	    } // end uncss
-	},
-	
-	sass: {
-		dist: {
-			files: {
-			  'build/assets/css/style.css':'scss/main.scss'
-			}
-		}
-	}, // end sass
-
-	htmlmin: {
-			dist: {
-				options: {
-		          removeCommentsFromCDATA: true,
-		          removeComments: true,
-		          collapseWhitespace: true,
-		          collapseBooleanAttributes: true,
-		          removeAttributeQuotes: true,
-		          removeRedundantAttributes: true,
-		          useShortDoctype: true,
-		          removeEmptyAttributes: true,
-		          removeOptionalTags: true,
-		          removeEmptyElements: false
-			},
-			files: [{
-                expand: true,
-                cwd: 'html/',
-                src: '**/*.html',
-                dest: 'build/'
-			}]
-		} // end htmlmin
-	},	
-		
-	watch: {
-      dist: {
-        files: [
-          'js/**/*',
-          'scss/**/*'
-        ],
-        tasks: ['sass']
-      }
-    }, // end watch
-    
-	clean: {
-	  build: {
-	    src: ['build/assets/*/**.css','build/assets/*/**.js','build/*.html','teste/screenshot/**']
-	  }
-	}, // end clean
-	
-    pageres: {
-        prod: {
-            options: {
-                url: 'google.com.br',
-                sizes: ['240x427', '320x480', '480x320', '768x1024', '1024x768', 'iphone 5s', '1920x1080'],
-                crop: true,
-                dest: 'test/screenshot'
-            }
-        }
-    }, // end pageres
-    
-    imagemin: {
-        dist: {
-            options: {
-                optimizationLevel: 7,
-                progressive: true
+  pkg: grunt.file.readJSON('package.json'),
+  		
+  		// Caminhos padrões
+		paths: {
+            build: {
+                dev: 'build/dev',
+                prod: 'build/prod'
             },
-            files: [{
-                expand: true,
-                cwd: 'build/assets/img',
-                src: '**/*.{png,jpg,gif}',
-                dest: 'build/assets/img'
-            }]
-        }
-    }, // end imagemin	  
-	  
-	browserSync: {
-			bsFiles: {
-			src : 'build/**/*.*'
-		},
-		options: {
-			server: {
-				baseDir: "build"
+            html:  'html',
+            sass:   'scss',
+            js:    'js'
+        },
+        
+        // Uglify
+		uglify: {
+			options: {mangle: false},
+			dev: {
+				files: {'<%= paths.build.dev %>/assets/js/javascript.js':['<%= paths.js %>/main.js']}
 			},
-            reloadDelay: 1000,
-            ghostMode: {
-				scroll: true,
-				links: true,
-				forms: true,
-				clicks: true,
-				location: true
-            }
-        }
-	}, //end browser sync
-	rsync: {
-	    options: {
-	        args: ['--verbose', '--chmod=Du=rwx,Dgo=rx,Fu=rw,Fgo=r'],
-	        exclude: [".git*","*.scss","node_modules"],
-	        recursive: true,
-            compareMode: 'checksum'
+			prod: {
+				files: {'<%= paths.build.prod %>/assets/js/javascript.js':['<%= paths.js %>/main.js']}
+			}
+			
+		},
+	
+		// CSSMin
+		cssmin: {
+			dev: {
+				files:[
+					{src: '<%= paths.build.dev %>/assets/css/style.css', dest: '<%= paths.build.dev %>/assets/css/style.css'}
+				]
+			},
+			prod: {
+				files:[
+					{src: '<%= paths.build.dev %>/assets/css/style.css', dest: '<%= paths.build.dev %>/assets/css/style.css'}
+				]
+			}
+		},
+		
+		//Uncss
+    
+		uncss: {
+		    options: {
+		    	htmlroot: 'build',
+		    	report: 'gzip'
+		    },
+			dev: {
+				files:[
+					{src: '<%= paths.build.dev %>/index.html', dest: '<%= paths.build.dev %>/assets/css/style.css'}
+				]
+			},
+			prod: {
+				files:[
+					{src: '<%= paths.build.dev %>/index.html', dest: '<%= paths.build.dev %>/assets/css/style.css'}
+				]
+			}    
+		},
+		
+		//SASS	
+		sass: {	
+			dev: {
+				files: {'<%= paths.build.dev %>/assets/css/style.css':'<%= paths.sass %>/main.scss'}
+			},
+			prod: {
+				files: {'<%= paths.build.prod %>/assets/css/style.css':'<%= paths.sass %>/main.scss'}
+			}
+		},
+
+		//HTMLMin
+		htmlmin: {
+			options: {
+				removeCommentsFromCDATA: true,
+				removeComments: true,
+				collapseWhitespace: true,
+				collapseBooleanAttributes: true,
+				removeAttributeQuotes: true,
+				removeRedundantAttributes: true,
+				useShortDoctype: true,
+				removeEmptyAttributes: true,
+				removeOptionalTags: true,
+				removeEmptyElements: false
+			},
+			dev: {
+				files: [{expand: true,cwd: 'html/',src: '**/*.html',dest: '<%= paths.build.dev %>/'}]
+			},
+			prod: {
+				files: [{expand: true,cwd: 'html/',src: '**/*.html',dest: '<%= paths.build.prod %>/'}]
+			}
+		},	
+		
+		//Watch
+		watch: {
+	      dev: {
+	        files: ['<%= paths.js %>/**/*','<%= paths.sass %>/**/*'],
+	        tasks: ['sass:dev']
+	      },
+	      prod: {
+	        files: ['<%= paths.js %>/**/*','<%= paths.sass %>/**/*'],
+	        tasks: ['sass:prod']
+	      }
 	    },
-	    dist: {
-	        options: {
-	            src: "build",
-	            dest: "build/dist"
+	    
+	    //Clean
+		clean: {
+		  dev: {
+		    src: ['<%= paths.build.dev %>/assets/*/**.css','<%= paths.build.dev %>/assets/*/**.js','<%= paths.build.dev %>/*.html','<%= paths.build.dev %>/teste/screenshot/**']
+		  },		
+		  prod: {
+		    src: ['<%= paths.build.prod %>/assets/*/**.css','<%= paths.build.prod %>/assets/*/**.js','<%= paths.build.prod %>/*.html','<%= paths.build.prod %>/teste/screenshot/**']
+		  }
+		},
+		
+		//Pageres
+	    pageres: {
+	        dev: {
+	            options: {
+	                url: 'www.terra.com.br',
+	                sizes: ['1280x1000','1024x1000','800x1000','600x1000','480x1000','320x1000'],
+	                crop: true,
+	                dest: 'test/screenshot'
+	            }
+	        },
+	        prod: {
+	            options: {
+	                url: 'www.globo.com.br',
+	                sizes: ['1280x1000','1024x1000','800x1000','600x1000','480x1000','320x1000'],
+	                crop: true,
+	                dest: 'test/screenshot'
+	            }
 	        }
 	    },
-	    stage: { //Servidor de testes
-	        options: {
-	            src: "build/dist/",
-	            dest: "/var/www/",
-	            host: "192.168.56.101",
-	            delete: true // Careful this option could cause data loss, read the docs!
+    
+		//Imagemin
+	    imagemin: {
+			options: {
+			    optimizationLevel: 7,
+			    progressive: true
+			},
+	        dev: {
+	            files: [{expand: true,cwd:'<%= paths.build.dev %>/assets/img',src: '**/*.{png,jpg,gif}',dest: '<%= paths.build.dev %>/assets/img'}]
+	        },
+	        prod: {
+	            files: [{expand: true,cwd:'<%= paths.build.prod %>/assets/img',src: '**/*.{png,jpg,gif}',dest: '<%= paths.build.prod %>/assets/img'}]
 	        }
-	    },
-	    prod: { //Servidor de produção
-	        options: {
-	            src: "build/dist",
-	            dest: "/var/www/",
-	            host: "user@live-host",
-	            delete: true // Careful this option could cause data loss, read the docs!
+	    },  
+	  
+		//Browser Sync
+		browserSync: {
+			bsFiles: {src:'<%= paths.build.dev %>/**/*.*'},
+			options: {
+				server: {baseDir: "build"},
+	            reloadDelay: 1000,
+	            ghostMode: {
+					scroll: true,
+					links: true,
+					forms: true,
+					clicks: true,
+					location: true
+	            }
 	        }
-	    }
-	}, // end rsync
-	jshint: {
-		all: ['Gruntfile.js', 'js/*.js', 'build/assets/js/*.js']
-	}, //end jshint
-	validation: {
-	    options: {
-	        reset: grunt.option('reset') || false,
-	        stoponerror: false
-	    },
-	    files: {
-	        src: ['html/*.html', 'build/*.html']
-	    }
-	}
+		}
   });
 
   // Plugins do Grunt
@@ -177,21 +175,25 @@ module.exports = function( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  
   grunt.loadNpmTasks('grunt-html-validation');
   grunt.loadNpmTasks('grunt-browser-sync');
-  grunt.loadNpmTasks('grunt-rsync-2');
   grunt.loadNpmTasks('grunt-pageres');
   grunt.loadNpmTasks('grunt-uncss');
   
-  // Tarefas que serão executadas
-  grunt.registerTask('compile',['sass']);	// Compila os arquivos .scss
-  grunt.registerTask('minify',['htmlmin', 'uncss', 'uglify', 'cssmin', 'imagemin']);	// Minifica o html, css, js e optimiza as imagens.
-  grunt.registerTask('build',['clean', 'compile', 'minify']);	// Executa as tarefas de minificar, limpar o diretório e compilar. 
-  grunt.registerTask('print',['pageres']);	// Tira print das páginas nas principais resoluções mobile.
+  // Tarefas que serão executadas  
   grunt.registerTask('validate',['jshint', 'validation']);	// Valida arquivos js e html.
-  grunt.registerTask('live', ["browserSync", "watch"]);	// Sincroniza browser com diferentes dispositivos.
-
-  grunt.registerTask('stage', ['build','rsync:stage']);	// Executa todas as tarefas e envia para o ambiente de desenvolvimento.
-  grunt.registerTask('deploy', ['build', 'rsync:prod', 'print', 'test']);	// Da deploy e envia para o ambiente de produção.
+  
+  //Tarefas para produção
+  grunt.registerTask('compile:prod',['sass:prod']);	// Compila os arquivos .scss
+  grunt.registerTask('minify:prod',['htmlmin:prod', 'uncss:prod', 'uglify:prod', 'cssmin:prod', 'imagemin:prod']);	// Minifica o html, css, js e optimiza as imagens.
+  grunt.registerTask('build:prod',['clean:prod', 'compile:prod', 'minify:prod']);	// Executa as tarefas de minificar, limpar o diretório e compilar. 
+  grunt.registerTask('print:prod',['pageres:prod']);	// Tira print das páginas nas principais resoluções mobile.
+  grunt.registerTask('live:prod', ["browserSync:prod", "watch:prod"]);	// Sincroniza browser com diferentes dispositivos.
+  
+  //Tarefas para desenv.
+  grunt.registerTask('compile:dev',['sass:dev']);	// Compila os arquivos .scss
+  grunt.registerTask('minify:dev',['htmlmin:dev', 'uncss:dev', 'uglify:dev', 'cssmin:dev', 'imagemin:dev']);	// Minifica o html, css, js e optimiza as imagens.
+  grunt.registerTask('build:dev',['clean:dev', 'compile:dev', 'minify:dev']);	// Executa as tarefas de minificar, limpar o diretório e compilar. 
+  grunt.registerTask('print:dev',['pageres:dev']);	// Tira print das páginas nas principais resoluções mobile.
+  grunt.registerTask('live:dev', ["browserSync:dev", "watch:dev"]);	// Sincroniza browser com diferentes dispositivos.
 };
