@@ -55,7 +55,6 @@ require('time-grunt')(grunt);
 		},
 		
 		//Uncss
-    
 		uncss: {
 		    options: {
 		    	htmlroot: 'build',
@@ -192,19 +191,19 @@ require('time-grunt')(grunt);
 	  
 		//Browser Sync
 		browserSync: {
-			bsFiles: {src:'<%= paths.build.dev %>/**/*.*'},
-			options: {
-				server: {baseDir: "build"},
-	            reloadDelay: 1000,
-	            ghostMode: {
-					scroll: true,
-					links: true,
-					forms: true,
-					clicks: true,
-					location: true
-	            }
-	        }
-		},
+            env: {
+                bsFiles: {
+                    src : '<%= paths.build.env %>/assets/css/*.css'
+                },
+                options: {
+                    watchTask: true,
+                    proxy: "padrao.dev",
+                    server: {
+								baseDir: "<%= paths.build.env %>"
+					}
+                }
+            }
+        },
 		
 		//Copy files
 		copy: {
@@ -213,32 +212,27 @@ require('time-grunt')(grunt);
 				dot: true,
 				cwd: '<%= paths.statics %>',
 				src: '**',
-				dest: '<%= paths.build.dev %>',
-				flatten: true,
-				filter: 'isFile',
+				dest: '<%= paths.build.dev %>'
 			},
 			env: {
 				expand: true,
 				dot: true,
 				cwd: '<%= paths.statics %>',
 				src: '**',
-				dest: '<%= paths.build.env %>',
-				flatten: true,
-				filter: 'isFile',
+				dest: '<%= paths.build.env %>'
 			},
 			prod: {
 				expand: true,
 				dot: true,
 				cwd: '<%= paths.statics %>',
 				src: '**',
-				dest: '<%= paths.build.prod %>',
-				flatten: true,
-				filter: 'isFile',
+				dest: '<%= paths.build.prod %>'
 			},
 		},
   });
 
   // Plugins do Grunt
+  grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-sass');
@@ -263,7 +257,6 @@ require('time-grunt')(grunt);
   grunt.registerTask('build:prod',['clean:prod', 'copy:prod', 'compile:prod', 'minify:prod']);	// Executa as tarefas de minificar, limpar o diretório e compilar. 
   grunt.registerTask('validate:prod',['jshint:prod', 'validation:prod']);	// Valida arquivos js e html.
   grunt.registerTask('print:prod',['pageres:prod']);	// Tira print das páginas nas principais resoluções mobile.
-  grunt.registerTask('live:prod', ["browserSync:prod", "watch:prod"]);	// Sincroniza browser com diferentes dispositivos.
 
   //Tarefas para desenv.
   grunt.registerTask('compile:dev',['sass:dev']);	// Compila os arquivos .scss
@@ -271,7 +264,6 @@ require('time-grunt')(grunt);
   grunt.registerTask('build:dev',['clean:dev', 'copy:dev', 'compile:dev', 'minify:dev']);	// Executa as tarefas de minificar, limpar o diretório e compilar. 
   grunt.registerTask('validate:dev',['jshint:dev', 'validation:dev']);	// Valida arquivos js e html.
   grunt.registerTask('print:dev',['pageres:dev']);	// Tira print das páginas nas principais resoluções mobile.
-  grunt.registerTask('live:dev', ["browserSync:dev", "watch:dev"]);	// Sincroniza browser com diferentes dispositivos.
 
   //Tarefas para maquina virtual.
   grunt.registerTask('compile:env',['sass:env']);	// Compila os arquivos .scss
