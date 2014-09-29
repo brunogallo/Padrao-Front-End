@@ -1,20 +1,44 @@
-# Web Starter Kit Extras
+# Server Configs
 
-This repository contains optional additions to [Web Starter Kit (WSK)][0] project, such as web server configurations, which, while useful, do not strictly belong in the main WSK repository.
-
-## [Server Configs](server-configs)
-
-Boilerplate configurations for various web servers to host WSK-based app.
-
-## Contributing
-
-Contributions, questions and comments are all welcome and encouraged. For code contributions to Web Starter Kit Extras, please see our [Contribution guide](CONTRIBUTING.md) before submitting a pull request. [WSK][0] related issues should be filed on the [main repo issue tracker][1].
-
-## License
-
-Apache 2.0
-Copyright 2014 Google Inc
+A lista de configurações abaixo são do projeto [HTML5 Boilerplate (H5BP)][9].
 
 
-[0]: https://github.com/google/web-starter-kit
-[1]: https://github.com/google/web-starter-kit/issues/new
+### [Apache][5]
+
+Apache HTTP server boilerplate configuration is provided by HTML5 Boilerplate project.
+
+### [Google App Engine (GAE)][6]
+
+GAE boilerplate configuration is provided by HTML5 Boilerplate project.
+
+### [Nginx][7]
+
+Nginx boilerplate configuration is provided by HTML5 Boilerplate project.
+
+### [Node.js][8]
+
+Node.js boilerplate configuration is provided by HTML5 Boilerplate project.
+
+## Other solutions
+
+You can also host static websites in an object-storage bucket without a need of a server at all.
+
+### [Google Cloud Storage (GCS)][1]
+
+Please, follow [Configuring a Bucket as a Website][2] guide on the GCS documentation pages.
+
+### [Amazon Web Services (AWS) S3][3]
+
+Please, follow [Hosting a Static Website on Amazon S3][4] guide on the AWS S3 documentation pages.
+
+
+
+[1]: https://cloud.google.com/products/cloud-storage/
+[2]: https://developers.google.com/storage/docs/website-configuration
+[3]: http://aws.amazon.com/s3/
+[4]: http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html
+[5]: https://github.com/h5bp/server-configs-apache
+[6]: https://github.com/h5bp/server-configs-gae
+[7]: https://github.com/h5bp/server-configs-nginx
+[8]: https://github.com/h5bp/server-configs-node
+[9]: http://html5boilerplate.com/
