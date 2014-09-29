@@ -37,25 +37,6 @@ Após a instalação, edite o Gruntfile.js para atender as necessidades de cada 
 * BlackBerry 10
 
 
-## Estrutura
-
-├── padrao-front-end
-│   ├── app
-│   │   ├── src
-│   │   │   ├── js
-│   │   │   ├── scss
-│   │   │   ├── statics
-│   │   │   └── views
-│   │   ├── deploy
-│   │   ├── dev
-│   │   └── env
-│   │       └── ubuntu
-│   │            └── www
-│   │   
-│   │   
-│   └── docs
-
-
 ## Plugins utilizados
 
 - **uglify** 			- Minifica todos os .js
