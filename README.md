@@ -48,7 +48,7 @@ Aplicação em um ambiente: grunt build:**ambiente**
 - **:prod**				- Para produção /deploy.
 - **:dev**				- Para desenvolvimento /dev.
 - **:env**				- Para environment, sobe o projeto para o box no vagrant permitindo simular todas as configurações do servidor em produção /env.
-- [Clique aqui](app/dev/Readme.md) para conhecer como são utilizados os ambientes através do vagrant.
+- [Clique aqui](app/env/Readme.md) para conhecer como são utilizados os ambientes através do vagrant.
 
 
 ***Tarefas***
