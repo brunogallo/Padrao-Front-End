@@ -35,20 +35,33 @@ Após a instalação, edite o Gruntfile.js para atender as necessidades de cada 
 - **browsersync**		- Sincroniza browsers em tempo real.
 - **jshint**			- Valida os códigos js.
 - **validation**		- Valida os códigos html.
+- **copy**				- Copia arquivos estáticos para a pasta desejada.
 - **rsync**				- Sincroniza com o servidor ftp.
 
 ## Utilização
 
+***Ambientes***
+
+É necessário especificar em qual ambiente a tarefa será aplicada, por exemplo:
+
+Aplicação em um ambiente: grunt build:**ambiente**
+
+- **:prod**				- Para produção, ("/deploy").
+- **:dev**				- Para desenvolvimento, ("/dev").
+- **:env**				- Para environment, sobe o projeto para o box no vagrant permitindo simular todas as configurações do servidor em produção.
+
+- [Clique aqui](app/dev/Readme.md) para conhecer como são utilizados os ambientes através do vagrant.
+
+
 ***Tarefas***
+
 - **grunt compile**		- Compila os arquivos .scss
 - **grunt minify**		- Minifica o html, css, js e optimiza as imagens.
 - **grunt build**			- Executa as tarefas de minificar, limpar o diretório e compilar. 
-- **grunt print**			- Tira print das páginas nas principais resoluções mobile.
+- **grunt print**			- Tira print das páginas nas principais resoluções e também mobile.
 - **grunt validate**		- Valida o código dos arquivos js e html.
 - **grunt live**			- Sincroniza browser com diferentes dispositivos.
-- **grunt stage**		- Executa todas as tarefas e envia para o ambiente de desenvolvimento.
-- **grunt deploy**		- Da deploy e envia para o ambiente de produção.
-
+- **grunt copy**		- Copia arquivos estáticos para a pasta desejada.
 
 ***SASS***
 
@@ -56,11 +69,6 @@ Após a instalação, edite o Gruntfile.js para atender as necessidades de cada 
 - [Funções](/docs/funcoes.md)
 - [Add-ons](/docs/addons.md)
 - [Configuração](/docs/configuracao.md)
-
-
-## Ambiente de testes
-
-- [Clique aqui](dev-environment/Readme.md) para conhecer como é utilizado o ambiente através do vagrant.
 
 
 ## Práticas para utilização

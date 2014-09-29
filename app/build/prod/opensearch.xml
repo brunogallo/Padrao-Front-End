@@ -1,9 +1,0 @@
-<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
-<ShortName>Nome do site</ShortName>
-<Description>Descrição do site</Description>
-<Tags>tags do site</Tags>
-<Image width="16" height="16">url para o favicon.ico</Image>
-<Url xmlns:referrer="http://a9.com/-/opensearch/extensions/referrer/" type="text/html" method="GET" template="http://suaurl.com.br/?s={searchTerms}"/>
-<InputEncoding>UTF-8</InputEncoding>
-<AdultContent>false</AdultContent>
-</OpenSearchDescription>
