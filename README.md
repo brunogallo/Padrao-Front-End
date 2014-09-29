@@ -42,14 +42,12 @@ Após a instalação, edite o Gruntfile.js para atender as necessidades de cada 
 
 ***Ambientes***
 
-É necessário especificar em qual ambiente a tarefa será aplicada, por exemplo:
-
+É necessário especificar em qual ambiente a tarefa será aplicada, por exemplo:<br>
 Aplicação em um ambiente: grunt build:**ambiente**
 
-- **:prod**				- Para produção, ("/deploy").
-- **:dev**				- Para desenvolvimento, ("/dev").
-- **:env**				- Para environment, sobe o projeto para o box no vagrant permitindo simular todas as configurações do servidor em produção.
-
+- **:prod**				- Para produção /deploy.
+- **:dev**				- Para desenvolvimento /dev.
+- **:env**				- Para environment, sobe o projeto para o box no vagrant permitindo simular todas as configurações do servidor em produção /env.
 - [Clique aqui](app/dev/Readme.md) para conhecer como são utilizados os ambientes através do vagrant.
 
 
