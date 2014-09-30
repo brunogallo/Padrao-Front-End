@@ -62,10 +62,9 @@ Após a instalação, edite o Gruntfile.js para atender as necessidades de cada 
 É necessário especificar em qual ambiente a tarefa será aplicada, por exemplo:<br>
 Aplicação em um ambiente: grunt build:**ambiente**
 
-- **:prod**				- Para produção /deploy
+- **:deploy**				- Para produção /deploy
 - **:dev**				- Para desenvolvimento /dev
-- **:env**				- Para environment, sobe o projeto para o box no vagrant permitindo simular todas as configurações do servidor em produção /env
-- [Clique aqui](app/env/Readme.md) para conhecer como são utilizados os ambientes através do vagrant
+- [Clique aqui](app/env/Readme.md) - Também é possível utilizar com vagrant.
 
 
 ***Tarefas***
@@ -85,6 +84,31 @@ Aplicação em um ambiente: grunt build:**ambiente**
 - [Funções](/docs/funcoes.md)
 - [Add-ons](/docs/addons.md)
 - [Configuração](/docs/configuracao.md)
+
+
+## Otimizando o servidor
+
+
+A lista de configurações abaixo são do projeto [HTML5 Boilerplate (H5BP)][9].
+
+- **[Apache][5]**
+- **[Google App Engine (GAE)][6]**
+- **[Nginx][7]**
+- **[Node.js][8]**
+- **[Google Cloud Storage (GCS)][1]**<br>
+Please, follow [Configuring a Bucket as a Website][2] guide on the GCS documentation pages.
+- **[Amazon Web Services (AWS) S3][3]**<br>
+Please, follow [Hosting a Static Website on Amazon S3][4] guide on the AWS S3 documentation pages.
+
+[1]: https://cloud.google.com/products/cloud-storage/
+[2]: https://developers.google.com/storage/docs/website-configuration
+[3]: http://aws.amazon.com/s3/
+[4]: http://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html
+[5]: https://github.com/h5bp/server-configs-apache
+[6]: https://github.com/h5bp/server-configs-gae
+[7]: https://github.com/h5bp/server-configs-nginx
+[8]: https://github.com/h5bp/server-configs-node
+[9]: http://html5boilerplate.com/
 
 
 ## Práticas para utilização

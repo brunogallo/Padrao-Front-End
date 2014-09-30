@@ -11,8 +11,7 @@ require('time-grunt')(grunt);
 		paths: {
             build: {
                 dev: 'dev',
-                prod: 'deploy',
-                env: 'env/ubuntu/www/default'
+                deploy: 'deploy'
             },
             views:  'src/views',
             sass:   'src/scss',
@@ -26,13 +25,9 @@ require('time-grunt')(grunt);
 			dev: {
 				files: {'<%= paths.build.dev %>/assets/js/javascript.js':['<%= paths.js %>/main.js']}
 			},
-			prod: {
-				files: {'<%= paths.build.prod %>/assets/js/javascript.js':['<%= paths.js %>/main.js']}
-			},
-			env: {
-				files: {'<%= paths.build.env %>/assets/js/javascript.js':['<%= paths.js %>/main.js']}
-			}
-			
+			deploy: {
+				files: {'<%= paths.build.deploy %>/assets/js/javascript.js':['<%= paths.js %>/main.js']}
+			}			
 		},
 	
 		// CSSMin
@@ -42,14 +37,9 @@ require('time-grunt')(grunt);
 					{src: '<%= paths.build.dev %>/assets/css/style.css', dest: '<%= paths.build.dev %>/assets/css/style.css'}
 				]
 			},
-			prod: {
+			deploy: {
 				files:[
 					{src: '<%= paths.build.dev %>/assets/css/style.css', dest: '<%= paths.build.dev %>/assets/css/style.css'}
-				]
-			},
-			env: {
-				files:[
-					{src: '<%= paths.build.env %>/assets/css/style.css', dest: '<%= paths.build.env %>/assets/css/style.css'}
 				]
 			}
 		},
@@ -65,16 +55,11 @@ require('time-grunt')(grunt);
 					{src: '<%= paths.build.dev %>/index.html', dest: '<%= paths.build.dev %>/assets/css/style.css'}
 				]
 			},
-			prod: {
+			deploy: {
 				files:[
 					{src: '<%= paths.build.dev %>/index.html', dest: '<%= paths.build.dev %>/assets/css/style.css'}
 				]
-			},
-			env: {
-				files:[
-					{src: '<%= paths.build.env %>/index.html', dest: '<%= paths.build.env %>/assets/css/style.css'}
-				]
-			}   
+			}
 		},
 		
 		//SASS	
@@ -82,11 +67,8 @@ require('time-grunt')(grunt);
 			dev: {
 				files: {'<%= paths.build.dev %>/assets/css/style.css':'<%= paths.sass %>/main.scss'}
 			},
-			prod: {
-				files: {'<%= paths.build.prod %>/assets/css/style.css':'<%= paths.sass %>/main.scss'}
-			},
-			env: {
-				files: {'<%= paths.build.env %>/assets/css/style.css':'<%= paths.sass %>/main.scss'}
+			deploy: {
+				files: {'<%= paths.build.deploy %>/assets/css/style.css':'<%= paths.sass %>/main.scss'}
 			}
 		},
 
@@ -107,11 +89,8 @@ require('time-grunt')(grunt);
 			dev: {
 				files: [{expand: true,cwd: 'src/views/',src: '**/*.html',dest: '<%= paths.build.dev %>/'}]
 			},
-			prod: {
-				files: [{expand: true,cwd: 'src/views/',src: '**/*.html',dest: '<%= paths.build.prod %>/'}]
-			},
-			env: {
-				files: [{expand: true,cwd: 'src/views/',src: '**/*.html',dest: '<%= paths.build.env %>/'}]
+			deploy: {
+				files: [{expand: true,cwd: 'src/views/',src: '**/*.html',dest: '<%= paths.build.deploy %>/'}]
 			}
 		},	
 		
@@ -121,13 +100,9 @@ require('time-grunt')(grunt);
 	        files: ['<%= paths.js %>/**/*','<%= paths.sass %>/**/*'],
 	        tasks: ['sass:dev']
 	      },
-	      prod: {
+	      deploy: {
 	        files: ['<%= paths.js %>/**/*','<%= paths.sass %>/**/*'],
 	        tasks: ['sass:prod']
-	      },
-	      env: {
-	        files: ['<%= paths.js %>/**/*','<%= paths.sass %>/**/*'],
-	        tasks: ['sass:env']
 	      }
 	    },
 	    
@@ -136,11 +111,8 @@ require('time-grunt')(grunt);
 		  dev: {
 		    src: ['<%= paths.build.dev %>/**/*']
 		  },		
-		  prod: {
-		    src: ['<%= paths.build.prod %>/**/*']
-		  },		
-		  env: {
-		    src: ['<%= paths.build.env %>/**/*']
+		  deploy: {
+		    src: ['<%= paths.build.deploy %>/**/*']
 		  }
 		},
 		
@@ -154,20 +126,12 @@ require('time-grunt')(grunt);
 	                dest: 'test/dev/screenshot'
 	            }
 	        },
-	        prod: {
+	        deploy: {
 	            options: {
 	                url: 'www.globo.com.br',
 	                sizes: ['1280x1000','1024x1000','800x1000','600x1000','480x1000','320x1000'],
 	                crop: true,
 	                dest: 'test/deploy/screenshot'
-	            }
-	        },
-	        env: {
-	            options: {
-	                url: 'www.ig.com.br',
-	                sizes: ['1280x1000','1024x1000','800x1000','600x1000','480x1000','320x1000'],
-	                crop: true,
-	                dest: 'test/env/screenshot'
 	            }
 	        }
 	    },
@@ -181,11 +145,8 @@ require('time-grunt')(grunt);
 	        dev: {
 	            files: [{expand: true,cwd:'<%= paths.build.dev %>/assets/img',src: '**/*.{png,jpg,gif}',dest: '<%= paths.build.dev %>/assets/img'}]
 	        },
-	        prod: {
-	            files: [{expand: true,cwd:'<%= paths.build.prod %>/assets/img',src: '**/*.{png,jpg,gif}',dest: '<%= paths.build.prod %>/assets/img'}]
-	        },
-	        env: {
-	            files: [{expand: true,cwd:'<%= paths.build.env %>/assets/img',src: '**/*.{png,jpg,gif}',dest: '<%= paths.build.env %>/assets/img'}]
+	        deploy: {
+	            files: [{expand: true,cwd:'<%= paths.build.deploy %>/assets/img',src: '**/*.{png,jpg,gif}',dest: '<%= paths.build.deploy %>/assets/img'}]
 	        }
 	    },  
 	  
@@ -193,13 +154,13 @@ require('time-grunt')(grunt);
 		browserSync: {
             env: {
                 bsFiles: {
-                    src : '<%= paths.build.env %>/assets/css/*.css'
+                    src : '<%= paths.build.dev %>/assets/css/*.css'
                 },
                 options: {
                     watchTask: true,
                     proxy: "padrao.dev",
                     server: {
-								baseDir: "<%= paths.build.env %>"
+								baseDir: "<%= paths.build.dev %>"
 					}
                 }
             }
@@ -214,19 +175,12 @@ require('time-grunt')(grunt);
 				src: '**',
 				dest: '<%= paths.build.dev %>'
 			},
-			env: {
+			deploy: {
 				expand: true,
 				dot: true,
 				cwd: '<%= paths.statics %>',
 				src: '**',
-				dest: '<%= paths.build.env %>'
-			},
-			prod: {
-				expand: true,
-				dot: true,
-				cwd: '<%= paths.statics %>',
-				src: '**',
-				dest: '<%= paths.build.prod %>'
+				dest: '<%= paths.build.deploy %>'
 			},
 		},
   });
@@ -248,15 +202,11 @@ require('time-grunt')(grunt);
   grunt.loadNpmTasks('grunt-uncss');
   
 
-  // Tarefas que serão executadas  
-  grunt.registerTask('validate',['jshint', 'validation']);	// Valida arquivos js e html.
 
   //Tarefas para produção
   grunt.registerTask('compile:prod',['sass:prod']);	// Compila os arquivos .scss
   grunt.registerTask('minify:prod',['htmlmin:prod', 'uncss:prod', 'uglify:prod', 'cssmin:prod', 'imagemin:prod']);	// Minifica o html, css, js e optimiza as imagens.
-  grunt.registerTask('build:prod',['clean:prod', 'copy:prod', 'compile:prod', 'minify:prod']);	// Executa as tarefas de minificar, limpar o diretório e compilar. 
-  grunt.registerTask('validate:prod',['jshint:prod', 'validation:prod']);	// Valida arquivos js e html.
-  grunt.registerTask('print:prod',['pageres:prod']);	// Tira print das páginas nas principais resoluções mobile.
+  grunt.registerTask('build:prod',['clean:prod', 'copy:prod', 'compile:prod', 'minify:prod']);	// Executa as tarefas de minificar, limpar o diretório e compilar.
 
   //Tarefas para desenv.
   grunt.registerTask('compile:dev',['sass:dev']);	// Compila os arquivos .scss
@@ -264,12 +214,6 @@ require('time-grunt')(grunt);
   grunt.registerTask('build:dev',['clean:dev', 'copy:dev', 'compile:dev', 'minify:dev']);	// Executa as tarefas de minificar, limpar o diretório e compilar. 
   grunt.registerTask('validate:dev',['jshint:dev', 'validation:dev']);	// Valida arquivos js e html.
   grunt.registerTask('print:dev',['pageres:dev']);	// Tira print das páginas nas principais resoluções mobile.
-
-  //Tarefas para maquina virtual.
-  grunt.registerTask('compile:env',['sass:env']);	// Compila os arquivos .scss
-  grunt.registerTask('minify:env',['htmlmin:env', 'uncss:env', 'uglify:env', 'cssmin:env', 'imagemin:env']);	// Minifica o html, css, js e optimiza as imagens.
-  grunt.registerTask('build:env',['clean:env', 'copy:env', 'compile:env', 'minify:env']);	// Executa as tarefas de minificar, limpar o diretório e compilar.
-  grunt.registerTask('validate:env',['jshint:env', 'validation:env']);	// Valida arquivos js e html. 
-  grunt.registerTask('print:env',['pageres:env']);	// Tira print das páginas nas principais resoluções mobile.
-  grunt.registerTask('live:env', ["browserSync:env", "watch:env"]);	// Sincroniza browser com diferentes dispositivos.
+  grunt.registerTask('live:dev', ["browserSync:dev", "watch:dev"]);	// Sincroniza browser com diferentes dispositivos.
+  grunt.registerTask('validate:dev',['jshint:dev', 'validation:dev']);	// Valida arquivos js e html.
 };
