@@ -102,7 +102,7 @@ require('time-grunt')(grunt);
 	      },
 	      deploy: {
 	        files: ['<%= paths.js %>/**/*','<%= paths.sass %>/**/*'],
-	        tasks: ['sass:prod']
+	        tasks: ['sass:deploy']
 	      }
 	    },
 	    
@@ -204,9 +204,9 @@ require('time-grunt')(grunt);
 
 
   //Tarefas para produção
-  grunt.registerTask('compile:prod',['sass:prod']);	// Compila os arquivos .scss
-  grunt.registerTask('minify:prod',['htmlmin:prod', 'uncss:prod', 'uglify:prod', 'cssmin:prod', 'imagemin:prod']);	// Minifica o html, css, js e optimiza as imagens.
-  grunt.registerTask('build:prod',['clean:prod', 'copy:prod', 'compile:prod', 'minify:prod']);	// Executa as tarefas de minificar, limpar o diretório e compilar.
+  grunt.registerTask('compile:deploy',['sass:deploy']);	// Compila os arquivos .scss
+  grunt.registerTask('minify:deploy',['htmlmin:deploy', 'uncss:deploy', 'uglify:deploy', 'cssmin:deploy', 'imagemin:deploy']);	// Minifica o html, css, js e optimiza as imagens.
+  grunt.registerTask('build:deploy',['clean:deploy', 'copy:deploy', 'compile:deploy', 'minify:deploy']);	// Executa as tarefas de minificar, limpar o diretório e compilar.
 
   //Tarefas para desenv.
   grunt.registerTask('compile:dev',['sass:dev']);	// Compila os arquivos .scss

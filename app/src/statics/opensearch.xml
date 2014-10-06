@@ -3,7 +3,7 @@
 <Description>Padrão Front End para automação de tarefas.</Description>
 <Tags>padrão front end, front end, gruntjs, automação, css3, responsive</Tags>
 <Image width="16" height="16">http://padrao.dev/favicon.ico</Image>
-<Url xmlns:referrer="http://a9.com/-/opensearch/extensions/referrer/" type="text/html" method="GET" template="http://padrao.dev?s={searchTerms}"/>
+<Url xmlns:referrer="http://a9.com/-/opensearch/extensions/referrer/" type="text/html" method="GET" template="http://brunogallo.github.io/padrao-front-end/buscar/?s={searchTerms}"/>
 <InputEncoding>UTF-8</InputEncoding>
 <AdultContent>false</AdultContent>
 </OpenSearchDescription>
