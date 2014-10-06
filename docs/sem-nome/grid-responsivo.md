@@ -1,6 +1,6 @@
 ## Grid Responsivo
 
-Precisamos configurar algumas opções no settings/_settings.scss
+Precisamos configurar algumas opções no layout/_settings.scss
 
 ```
 $columns: 12; // Numero de colunas

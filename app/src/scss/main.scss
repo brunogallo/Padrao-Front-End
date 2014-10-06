@@ -1,5 +1,7 @@
-// Settings
-@import "settings/settings";
+// Settings SASS
+@import "settings/prefixer";
+@import "settings/px-to-em";
+@import "settings/asset-pipeline";
 
 // Custom Helpers
 @import "helpers/convert-units";
@@ -72,6 +74,8 @@
 @import "addons/triangle";
 @import "addons/word-wrap";
 
+// Layout
+@import "layout/settings";
 @import "layout/reset";
 @import "layout/base";
 
