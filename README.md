@@ -20,10 +20,10 @@ Validar, compilar, minificar, otimizar imagens e enviar tudo isso para o ambient
 
 **SASS**
 
-- [Mixins](/docs/projeto/sass/mixins.md)
-- [Funções](/docs/projeto/sass/funcoes.md)
-- [Add-ons](/docs/projeto/sass/addons.md)
-- [Configuração](/docs/projeto/sass/configuracao.md)
+- [Mixins](/docs/sass/mixins.md)
+- [Funções](/docs/sass/funcoes.md)
+- [Add-ons](/docs/sass/addons.md)
+- [Configuração](/docs/sass/configuracao.md)
 
 
 **Servidor**
