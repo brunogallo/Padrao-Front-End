@@ -3,7 +3,7 @@
 
 #### Demo
 
-[Visualizar](http://brunogallo.github.io/demo/slick-banner/index.html)
+[Visualizar](http://brunogallo.github.io/demo/Slick-Banner/index.html)
 
 
 #### Opções
