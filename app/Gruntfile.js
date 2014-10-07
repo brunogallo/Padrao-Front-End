@@ -21,13 +21,30 @@ require('time-grunt')(grunt);
         
         // Uglify
 		uglify: {
-			options: {mangle: false},
 			dev: {
-				files: {'<%= paths.build.dev %>/assets/js/javascript.js':['<%= paths.js %>/main.js']}
+				options: {
+					mangle: false,
+					comments: false
+				},
+				files: [{
+					expand: true,
+					cwd: 'src/js',
+					src: '**/*.js',
+					dest: 'dev/assets/js/'
+				}]
 			},
 			deploy: {
-				files: {'<%= paths.build.deploy %>/assets/js/javascript.js':['<%= paths.js %>/main.js']}
-			}			
+				options: {
+					mangle: false,
+					comments: false
+				},
+				files: [{
+					expand: true,
+					cwd: 'src/js',
+					src: '**/*.js',
+					dest: 'deploy/assets/js/'
+				}]
+			}
 		},
 	
 		// CSSMin
@@ -97,11 +114,11 @@ require('time-grunt')(grunt);
 		//Watch
 		watch: {
 	      dev: {
-	        files: ['<%= paths.js %>/**/*','<%= paths.sass %>/**/*'],
+	        files: ['<%= paths.js %>/**/*','<%= paths.sass %>/**/*','<%= paths.views %>/**/*'],
 	        tasks: ['sass:dev']
 	      },
 	      deploy: {
-	        files: ['<%= paths.js %>/**/*','<%= paths.sass %>/**/*'],
+	        files: ['<%= paths.js %>/**/*','<%= paths.sass %>/**/*','<%= paths.views %>/**/*'],
 	        tasks: ['sass:deploy']
 	      }
 	    },
@@ -183,6 +200,26 @@ require('time-grunt')(grunt);
 				dest: '<%= paths.build.deploy %>'
 			},
 		},
+		
+		//Coffee Script
+		coffee: {
+			dev: {
+				options: {
+					bare: true
+				},
+				files: {
+					'<%= paths.build.dev %>/assets/js/main.js': ['src/js/*.coffee']
+				}
+			},
+			deploy: {
+				options: {
+					bare: true
+				},
+				files: {
+					'<%= paths.build.deploy %>/assets/js/main.js': ['src/js/*.coffee']
+				}
+			}
+		}
   });
 
   // Plugins do Grunt
@@ -196,21 +233,20 @@ require('time-grunt')(grunt);
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-html-validation');
   grunt.loadNpmTasks('grunt-browser-sync');
   grunt.loadNpmTasks('grunt-pageres');
   grunt.loadNpmTasks('grunt-uncss');
-  
-
 
   //Tarefas para produção
-  grunt.registerTask('compile:deploy',['sass:deploy']);	// Compila os arquivos .scss
+  grunt.registerTask('compile:deploy',['sass:deploy', 'coffee:deploy']);	// Compila os arquivos .scss e .coffee
   grunt.registerTask('minify:deploy',['htmlmin:deploy', 'uncss:deploy', 'uglify:deploy', 'cssmin:deploy', 'imagemin:deploy']);	// Minifica o html, css, js e optimiza as imagens.
   grunt.registerTask('build:deploy',['clean:deploy', 'copy:deploy', 'compile:deploy', 'minify:deploy']);	// Executa as tarefas de minificar, limpar o diretório e compilar.
 
   //Tarefas para desenv.
-  grunt.registerTask('compile:dev',['sass:dev']);	// Compila os arquivos .scss
-  grunt.registerTask('minify:dev',['htmlmin:dev', 'uncss:dev', 'uglify:dev', 'cssmin:dev', 'imagemin:dev']);	// Minifica o html, css, js e optimiza as imagens.
+  grunt.registerTask('compile:dev',['sass:dev', 'coffee:dev']);	// Compila os arquivos .scss e .coffee
+  grunt.registerTask('minify:dev',['htmlmin:dev', 'uglify:dev', 'cssmin:dev', 'imagemin:dev']);	// Minifica o html, css, js e optimiza as imagens.
   grunt.registerTask('build:dev',['clean:dev', 'copy:dev', 'compile:dev', 'minify:dev']);	// Executa as tarefas de minificar, limpar o diretório e compilar. 
   grunt.registerTask('validate:dev',['jshint:dev', 'validation:dev']);	// Valida arquivos js e html.
   grunt.registerTask('print:dev',['pageres:dev']);	// Tira print das páginas nas principais resoluções mobile.

@@ -14,3 +14,4 @@
 - **validation**		- Valida os códigos html
 - **copy**				- Copia arquivos estáticos para a pasta desejada
 - **rsync**				- Sincroniza com o servidor ftp
+- **coffee**			- Coffee script

@@ -36,9 +36,10 @@ Validar, compilar, minificar, otimizar imagens e enviar tudo isso para o ambient
 - [Otimizar Imagens](/docs/dicas/otimizar-imagens.md)
 
 
-## Sem nome até o momento...
+## Vendors
 
-- [Grid Responsivo](/docs/sem-nome/grid-responsivo.md)
+- [Grid Responsivo](/docs/vendors/grid-responsivo.md)
+- [Slick Banner](/docs/vendors/slick.md)
 
 
 
