@@ -279,11 +279,11 @@ module.exports = function( grunt ) {
 			}
 		},
 		
-		// Autoshot
+		// autoshot
 		autoshot: {
 			default_options: {
 				options: {
-					path: '<%= config.paths.env.dev %>screenshots',
+					path: '<%= config.paths.env.dev %>/screenshots',
 					filename: 'screenshot',
 					type: 'jpg',
 					// remote: 'http://github.com/',
@@ -303,7 +303,7 @@ module.exports = function( grunt ) {
 			},
 		},
 		
-		// Pagespeed
+		// pagespeed
 		pagespeed: {
 			options: {
 				nokey: true,
