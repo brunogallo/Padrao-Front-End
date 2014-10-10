@@ -55,7 +55,7 @@ module.exports = function( grunt ) {
 		    },
 			dist: {
 				files:{
-					'<%= config.paths.env.dev %>/assets/css/main.css': ['<%= config.paths.env.dist %>/index.html']
+					'<%= config.paths.env.dist %>/assets/css/main.css': ['<%= config.paths.env.dist %>/index.html']
 				}
 			}
 		},
@@ -105,11 +105,11 @@ module.exports = function( grunt ) {
 			},
 			js: {
 				src: ['<%= config.paths.env.dev %>/assets/js/**/*.js'],
-				dest: '<%= config.paths.env.dist %>/assets/js/main.js',
+				dest: '<%= config.paths.env.dist %>/assets/js/main.js'
 			},
 			css: {
 				src: ['<%= config.paths.env.dev %>/assets/css/**/*.css'],
-				dest: '<%= config.paths.env.dist %>/assets/css/main.css',
+				dest: '<%= config.paths.env.dist %>/assets/css/main.css'
 			}
 		},
 		
@@ -125,10 +125,6 @@ module.exports = function( grunt ) {
         // uglify
 		uglify: {
 			dist: {
-				options: {
-					mangle: false,
-					comments: false
-				},
 				files: [{
 					expand: true,
 					cwd: '<%= config.paths.env.dev %>/assets/js',
@@ -147,9 +143,9 @@ module.exports = function( grunt ) {
 	        dist: {
 	            files: [{
 	            	expand: true,
-	            	cwd:'<%= config.paths.env.dev %>/assets/imgs/**/*',
-	            	src: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif'],
-	            	dest: '<%= config.paths.env.dist %>/assets/imgs'
+	            	cwd: '<%= config.paths.env.dev %>/assets/img/',
+	            	src: ['**/*.png','**/*.jpg','**/*.jpeg','**/*.gif'],
+	            	dest: '<%= config.paths.env.dist %>/assets/img'
 	            }]
 	        }
 	    }, 
@@ -183,13 +179,13 @@ module.exports = function( grunt ) {
 			dist: {
 				expand: true,
 				dot: true,
-				cwd: '<%= config.paths.dev %>',
+				cwd: '<%= config.paths.env.dev %>',
 				src: [
 					'**',
 					'*.{md,txt,htaccess}',
-					'!<%= config.paths.assets %>/**/.{png,jpg,gif,jpeg}',
-					'!<%= config.paths.assets %>/**/.{css,js}',
-					'!<%= config.paths.assets %>/_**/**'
+					'!app/**/.{png,jpg,gif,jpeg}',
+					'!app/**/.{css,js}',
+					'!app/_**/**'
 				],
 				dest: '<%= config.paths.env.dist %>'
 			},
@@ -228,6 +224,107 @@ module.exports = function( grunt ) {
 					// }
                 }
 		    }
+		},
+		
+		// deploy
+		'ftp-deploy': {
+			dist: {
+				auth: {
+					host: 'ftp.xxx.xxx', // ftp host
+					port: 21,
+					authKey: 'key1' //.ftppass file on the ./
+				},
+				src: '<%= config.paths.env.dev %>',
+				dest: '<%= config.paths.ftp %>', // your remote directory
+				exclusions: [
+					'./**/.*', // all files what begin with dot
+					'./**/Thumbs.db',
+					'./**/README.md',
+					'./**/*.zip'
+				]
+			}
+		},
+		
+		// make a zipfile
+		compress: {
+			all: {
+				options: {
+					archive: 'all.zip'
+				},
+				files: [
+					{ 
+						expand: true, cwd: './', src: ['./**'], dest: '' 
+					},
+				]
+			},
+			dist: {
+				options: {
+					archive: '<%= config.paths.env.dist %>.zip'
+				},
+				files: [
+					{ 
+						expand: true, cwd: './', src: ['<%= config.paths.env.dist %>/**'], dest: '' 
+					},
+				]
+			},
+			dev: {
+				options: {
+					archive: 'dev.zip'
+				},
+				files: [
+					{ 
+						expand: true, cwd: './', src: ['<%= config.paths.env.dev %>/**'], dest: '' 
+					},
+				]
+			}
+		},
+		
+		// Autoshot
+		autoshot: {
+			default_options: {
+				options: {
+					path: '<%= config.paths.env.dev %>screenshots',
+					filename: 'screenshot',
+					type: 'jpg',
+					// remote: 'http://github.com/',
+					local: {
+						path: '<%= config.paths.env.dev %>',
+						port: 7788
+					},
+					viewport: [
+						'1920x1080',
+						'1280x1024',
+						'1024x768',
+						'768x960',
+						'480x600',
+						'320x500'
+					]
+				},
+			},
+		},
+		
+		// Pagespeed
+		pagespeed: {
+			options: {
+				nokey: true,
+				url: "https://developers.google.com"
+			},
+			dist: {
+				options: {
+					url: "http://developers.google.com/speed/docs/insights/v1/getting_started",
+					locale: "en_GB",
+					strategy: "desktop",
+					threshold: 80
+				}
+			},
+			dev: {
+				options: {
+					paths: ["/speed/docs/insights/v1/getting_started", "/speed/docs/about"],
+					locale: "en_GB",
+					strategy: "desktop",
+					threshold: 80
+				}
+			}
 		}
 	});
 
@@ -235,12 +332,12 @@ module.exports = function( grunt ) {
 	grunt.registerTask('dev', ['browserSync', 'watch']);
 
 	// build
-	grunt.registerTask('dist', ['clean:dist', 'uglify:dist', 'copy:dist', 'concat:js', 'concat:css', 'compass:dist', 'imagemin:dist','htmlmin:dist']);
+	grunt.registerTask('dist', ['clean', 'uglify', 'copy', 'concat', 'uncss', 'cssmin', 'imagemin', 'htmlmin']);
 	
 	// deploy
-	//grunt.registerTask('deploy', ['ftp-deploy:build']);
+	grunt.registerTask('deploy', ['ftp-deploy:dist']);
 
 	// compress
-	//grunt.registerTask('zip', ['compress:dist','compress:dev','compress:all']);    
+	grunt.registerTask('zip', ['compress:dist','compress:dev','compress:all']);    
 };
 		

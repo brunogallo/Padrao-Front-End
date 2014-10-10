@@ -16,15 +16,7 @@ Validar, compilar, minificar, otimizar imagens e enviar tudo isso para o ambient
 
 - [Instalação](/docs/primeiros-passos/instalacao.md)
 - [Utilização](/docs/primeiros-passos/utilizacao.md)
-
-
-**SASS**
-
-- [Mixins](/docs/sass/mixins.md)
-- [Funções](/docs/sass/funcoes.md)
-- [Add-ons](/docs/sass/addons.md)
-- [Configuração](/docs/sass/configuracao.md)
-
+- 
 
 **Servidor**
 
