@@ -99,10 +99,6 @@ module.exports = function( grunt ) {
 		
 		// concat
 		concat: {
-			options: {
-				stripBanners: true,
-				banner: '<%= config.meta.banner %>'
-			},
 			js: {
 				src: ['<%= config.paths.env.dev %>/assets/js/**/*.js'],
 				dest: '<%= config.paths.env.dist %>/assets/js/main.js'
@@ -183,9 +179,10 @@ module.exports = function( grunt ) {
 				src: [
 					'**',
 					'*.{md,txt,htaccess}',
-					'!app/**/.{png,jpg,gif,jpeg}',
-					'!app/**/.{css,js}',
-					'!app/_**/**'
+					'!**/.{png,jpg,gif,jpeg}',
+					'!**/.{css,js}',
+					'!**/.{scss}',
+					'!_**/**'
 				],
 				dest: '<%= config.paths.env.dist %>'
 			},
@@ -283,26 +280,29 @@ module.exports = function( grunt ) {
 		autoshot: {
 			default_options: {
 				options: {
+					// necessary config
 					path: '<%= config.paths.env.dev %>/screenshots',
 					filename: 'screenshot',
 					type: 'jpg',
-					// remote: 'http://github.com/',
+					// optional config, must set either remote or local
+					remote: {
+						files: [
+							{ src: 'http://www.globo.com', dest: 'remote-screenshot.png', delay: 800 }
+						]
+					},
+					
 					local: {
 						path: '<%= config.paths.env.dev %>',
-						port: 7788
+						port: 7788,
+						files: [
+							{ src: 'index.html', dest: 'local-screenshot.png', delay: 800 }
+						]
 					},
-					viewport: [
-						'1920x1080',
-						'1280x1024',
-						'1024x768',
-						'768x960',
-						'480x600',
-						'320x500'
-					]
+					viewport: ['1920x1080','1280x1024','1024x768','768x960','480x600','320x500'] 
 				},
 			},
 		},
-		
+
 		// pagespeed
 		pagespeed: {
 			options: {
