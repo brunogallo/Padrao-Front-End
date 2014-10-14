@@ -1,9 +1,16 @@
-// Vendors
-//@import "vendors/slick"; // Banner e Carousel.
+// Biblioteca Compass
+@import "compass";
 
-$branco : #000000;
+// Função de Media Queries
+@import "breakpoint";
 
-body{
-	color: $branco;
-	background-color: #cccccc;
-}
+// Sistema de Grid
+@import 'jeet/index';
+
+// Normalize
+@import 'normalize/normalize';
+
+// Layout
+@import 'layout/config';
+@import 'layout/header';
+@import 'layout/footer';

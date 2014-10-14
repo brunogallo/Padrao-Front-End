@@ -1,0 +1,36 @@
+
+header {
+ @include center;
+}
+aside {
+ @include col(1/3);
+ background: #1c893b;
+ 
+  @include breakpoint($desktop) {
+    @include col(2/3);
+  }
+}
+article {
+ @include col(2/3);
+ background: #1920e3;
+}
+
+header {
+  @include breakpoint($desktop) {
+    background: #333;
+  }
+}
+
+header {
+  @include breakpoint($mobile-small) {
+    background: #f80b0b;
+  }
+}
+
+header {
+  @include breakpoint($tablet) {
+    background: #ff00f2;
+  }
+}
+
+

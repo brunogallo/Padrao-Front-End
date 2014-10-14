@@ -77,7 +77,8 @@ module.exports = function( grunt ) {
 					config: 'config.rb',
 					sassDir: '<%= config.paths.sass %>',
 					cssDir: '<%= config.paths.env.dev %>/assets/css',
-					outputStyle: 'nested'
+                    outputStyle: 'compact',
+                    noLineComments: false
 				}
 			}
 		},
@@ -100,7 +101,7 @@ module.exports = function( grunt ) {
 		// concat
 		concat: {
 			js: {
-				src: ['<%= config.paths.env.dev %>/assets/js/**/*.js'],
+				src: ['<%= config.paths.env.dev %>/assets/js/*.js'],
 				dest: '<%= config.paths.env.dist %>/assets/js/main.js'
 			},
 			css: {
@@ -123,8 +124,8 @@ module.exports = function( grunt ) {
 			dist: {
 				files: [{
 					expand: true,
-					cwd: '<%= config.paths.env.dev %>/assets/js',
-					src: '**/*.js',
+					cwd: '<%= config.paths.env.dist %>/assets/js',
+					src: 'main.js',
 					dest: '<%= config.paths.env.dist %>/assets/js'
 				}]
 			}
@@ -177,12 +178,9 @@ module.exports = function( grunt ) {
 				dot: true,
 				cwd: '<%= config.paths.env.dev %>',
 				src: [
-					'**',
-					'*.{md,txt,htaccess}',
-					'!**/.{png,jpg,gif,jpeg}',
-					'!**/.{css,js}',
-					'!**/.{scss}',
-					'!_**/**'
+					'*.*',
+					'assets/fonts/**',
+					'assets/js/vendor/*.js'
 				],
 				dest: '<%= config.paths.env.dist %>'
 			},
@@ -332,7 +330,7 @@ module.exports = function( grunt ) {
 	grunt.registerTask('dev', ['browserSync', 'watch']);
 
 	// build
-	grunt.registerTask('dist', ['clean', 'uglify', 'copy', 'concat', 'uncss', 'cssmin', 'imagemin', 'htmlmin']);
+	grunt.registerTask('dist', ['clean', 'copy', 'concat', 'uncss', 'uglify', 'cssmin', 'imagemin', 'htmlmin']);
 	
 	// deploy
 	grunt.registerTask('deploy', ['ftp-deploy:dist']);
