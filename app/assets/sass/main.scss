@@ -1,5 +1,6 @@
-// Biblioteca Compass
-@import "compass";
+// Biblioteca Compass e Bourbon
+//@import "compass";
+@import "bourbon/bourbon";
 
 // Função de Media Queries
 @import "breakpoint";
@@ -10,7 +11,5 @@
 // Normalize
 @import 'normalize/normalize';
 
-// Layout
-@import 'layout/config';
-@import 'layout/header';
-@import 'layout/footer';
+// Estilos
+@import 'layout/base';

@@ -14,15 +14,11 @@ $ git clone git://github.com/brunogallo/padrao-front-end.git novo_projeto
 $ cd novo_projeto
 
 ***instale as dependencias***
-$ npm install
+$ sudo npm install
+$ gem install compass
+$ gem install bourbon
 $ gem install breakpoint
-
-
-
-
-
-
-
+$ gem install jeet
 ```
 
 
@@ -32,6 +28,13 @@ $ gem install breakpoint
 - `gulp dist`: Gera o projeto completo para fazer deploy.
 - `gulp deploy`: Realiza deploy.
 - `gulp compress`: Comprime todos os arquivos dev e deploy.
+
+
+**Bibliotécas**
+
+[Jeet](http://jeet.gs/) - Sistema de Grids.<br>
+[Breakpoints](http://breakpoint-sass.com/) - Media Queries.<br>
+[Compass](http://compass-style.org/index/) - Mixins, Funções e Vars.
 
 
 ## Otimizar imagens
