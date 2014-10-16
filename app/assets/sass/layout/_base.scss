@@ -1,0 +1,14 @@
+//Layout Config.
+@import 'variables';
+@import 'typography';
+
+// Author's custom styles
+*,
+*:before,
+*:after {
+    @include box-sizing(border-box);
+}
+
+// Layout
+@import 'header';
+@import 'footer';
