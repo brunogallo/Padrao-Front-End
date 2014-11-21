@@ -1,0 +1,105 @@
+// ====================================================================
+// Colors
+// ====================================================================
+
+// -------------------------------------
+// Base Colors
+// -------------------------------------
+
+$base-color : #0b0b0b;
+
+$white : white;
+$black : black;
+$grey  : grey;
+
+// -------------------------------------
+// Flat UI Colors
+// -------------------------------------
+
+$turquoise     : #1abc9c;
+$emerald       : #2ecc71;
+$peter-river   : #3498db;
+$amethyst      : #9b59b6;
+$wet-asphalt   : #34495e;
+
+$green-sea     : #16a085;
+$nephritis     : #27ae60;
+$belize-hole   : #2980b9;
+$wisteria      : #8e44ad;
+$midnight-blue : #2c3e50;
+
+$sun-flower    : #f1c40f;
+$carrot        : #e67e22;
+$alizarin      : #e74c3c;
+$clouds        : #ecf0f1;
+$concrete      : #95a5a6;
+
+$orange        : #f39c12;
+$pumpkin       : #d35400;
+$pomegranate   : #c0392b;
+$silver        : #bdc3c7;
+$asbestos      : #7f8c8d;
+
+// -------------------------------------
+// Events Colors
+// -------------------------------------
+
+$color-default : $asbestos;
+$color-alert   : $alizarin;
+$color-success : $emerald;
+$color-warning : $orange;
+$color-info    : $peter-river;
+
+$color-primary   : $turquoise;
+$color-secondary : $concrete;
+$color-accent    : $sun-flower;
+$color-shadow    : $midnight-blue;
+
+// -------------------------------------
+// UI Themes Colors
+// -------------------------------------
+
+$ui-colors : (
+  "turquoise"     : $turquoise,
+  "emerald"       : $emerald,
+  "peter-river"   : $peter-river,
+  "amethyst"      : $amethyst,
+  "wet-asphalt"   : $wet-asphalt,
+  "green-sea"     : $green-sea,
+  "nephritis"     : $nephritis,
+  "belize-hole"   : $belize-hole,
+  "wisteria"      : $wisteria,
+  "midnight-blue" : $midnight-blue,
+  "sun-flower"    : $sun-flower,
+  "carrot"        : $carrot,
+  "alizarin"      : $alizarin,
+  "clouds"        : $clouds,
+  "concrete"      : $concrete,
+  "orange"        : $orange,
+  "pumpkin"       : $pumpkin,
+  "pomegranate"   : $pomegranate,
+  "silver"        : $silver,
+  "asbestos"      : $asbestos
+);
+
+$events-colors : (
+ "default" : $color-default,
+ "alert"   : $color-alert,
+ "success" : $color-success,
+ "warning" : $color-warning,
+ "info"    : $color-info
+);
+
+// -------------------------------------
+// Color Palette Modifiers
+// -------------------------------------
+
+$color-palettes : (
+  grey: (
+    "x-light"  : lighten($silver, 25%),
+    "light"    : lighten($silver, 10%),
+    "base"     : $silver,
+    "dark"     : darken($silver, 10%),
+    "x-dark"   : darken($silver, 25%)
+  )
+);

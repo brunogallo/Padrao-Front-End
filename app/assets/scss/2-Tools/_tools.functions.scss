@@ -1,0 +1,135 @@
+// ====================================================================
+// Functions
+// ====================================================================
+
+
+// Programatically determines whether a color is light or dark
+// Returns a boolean
+// More details here http://robots.thoughtbot.com/closer-look-color-lightness
+
+@function is-light($hex-color) {
+  $-local-red: red(rgba($hex-color, 1.0));
+  $-local-green: green(rgba($hex-color, 1.0));
+  $-local-blue: blue(rgba($hex-color, 1.0));
+
+  $-local-lightness: ($-local-red * 0.2126 + $-local-green * 0.7152 + $-local-blue * 0.0722) / 255;
+
+  @return $-local-lightness > .6;
+}
+
+
+// Test a Sass list to see if it contains a defined value
+
+@function contains($list, $value) {
+  @return not not index($list, $value);
+}
+
+
+// Check for a valid length
+
+@function is-length($value) {
+  @return contains(0 "auto" "initial" "inherit", $value)
+          or type-of($value) == "number" and not unitless($value)
+          or str-slice($value + "", 1, 4) == "calc";
+}
+
+
+// Check for a valid size
+
+@function is-size($value) {
+  @return is-length($value)
+          or contains("fill" "fit-content" "min-content" "max-content", $value);
+}
+
+
+// Convert pixels to ems
+// eg. for a relational value of 12px write em(12) when the parent is 16px
+// if the parent is another value say 24px write em(12, 24)
+
+@function em($pxval, $base: $em-base) {
+  @if not unitless($pxval) {
+      $pxval: strip-units($pxval);
+  }
+  @if not unitless($base) {
+      $base: strip-units($base);
+  }
+  @return ($pxval / $base) * 1em;
+}
+
+
+// Convert pixels to rems
+// eg. for a relational value of 12px write rem(12)
+// Assumes $em-base is the font-size of <html>
+
+@function rem($pxval) {
+  @if not unitless($pxval) {
+      $pxval: strip-units($pxval);
+  }
+
+  $base: $em-base;
+  @if not unitless($base) {
+      $base: strip-units($base);
+  }
+  @return ($pxval / $base) * 1rem;
+}
+
+
+// Srtips the units from a value. e.g. 12px -> 12
+
+@function strip-units($val) {
+  @return ($val / ($val * 0 + 1));
+}
+
+
+// Add percentage of white to a color
+@function tint($color, $percent){
+  @return mix(white, $color, $percent);
+}
+
+
+// Add percentage of black to a color
+@function shade($color, $percent){
+  @return mix(black, $color, $percent);
+}
+
+
+// Return vendor-prefixed property names if appropriate
+// Example: transition-property-names((transform, color, background), moz) -> -moz-transform, color, background
+//************************************************************************//
+@function transition-property-names($props, $vendor: false) {
+	$new-props: ();
+	
+	@each $prop in $props {
+		$new-props: append($new-props, transition-property-name($prop, $vendor), comma);
+	}
+
+	@return $new-props;
+}
+
+@function transition-property-name($prop, $vendor: false) {
+	// put other properties that need to be prefixed here aswell
+	@if $vendor and $prop == transform {
+		@return unquote('-'+$vendor+'-'+$prop);
+	}
+	@else {
+		@return $prop;
+	}
+}
+
+
+// Convert shorthand to the 4-value syntax
+
+@function unpack($shorthand) {
+  @if length($shorthand) == 1 {
+    @return nth($shorthand, 1) nth($shorthand, 1) nth($shorthand, 1) nth($shorthand, 1);
+  }
+  @else if length($shorthand) == 2 {
+    @return nth($shorthand, 1) nth($shorthand, 2) nth($shorthand, 1) nth($shorthand, 2);
+  }
+  @else if length($shorthand) == 3 {
+    @return nth($shorthand, 1) nth($shorthand, 2) nth($shorthand, 3) nth($shorthand, 2);
+  }
+  @else {
+    @return $shorthand;
+  }
+}

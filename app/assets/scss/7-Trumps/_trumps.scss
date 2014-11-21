@@ -1,0 +1,71 @@
+// ====================================================================
+// Trumps
+// ====================================================================
+
+// -------------------------------------
+// Center alignment
+// -------------------------------------
+
+%center-align {
+  text-align: center;
+}
+
+// -------------------------------------
+// Center elements
+// -------------------------------------
+
+%centered {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+//Convert Units
+
+@function _convert-units($number, $unit) {
+  $strings: 'px' 'cm' 'mm' '%' 'ch' 'pica' 'in' 'em' 'rem' 'pt' 'pc' 'ex' 'vw' 'vh' 'vmin' 'vmax', 'deg', 'rad', 'grad', 'turn';
+  $units:   1px  1cm  1mm  1%  1ch  1pica  1in  1em  1rem  1pt  1pc  1ex  1vw  1vh  1vmin  1vmax,  1deg,  1rad,  1grad, 1turn;
+  $index: index($strings, $unit);
+
+  @if not $index {
+    @warn "Unknown unit `#{$unit}`.";
+    @return false;
+  }
+  @return $number * nth($units, $index);
+}
+
+// Used for creating the source string for fonts using @font-face
+
+@function font-url-prefixer($asset-pipeline) {
+  @if $asset-pipeline == true {
+    @return font-url;
+  } @else {
+    @return url;
+  }
+}
+
+@function font-source-declaration(
+  $font-family,
+  $file-path,
+  $asset-pipeline,
+  $file-formats,
+  $font-url) {
+
+  $src: null;
+
+  $formats-map: (
+    eot:  "#{$font-url}('#{$file-path}.eot?#iefix') format('embedded-opentype')",
+    woff2: "#{$font-url}('#{$file-path}.woff2') format('woff2')",
+    woff: "#{$font-url}('#{$file-path}.woff') format('woff')",
+    ttf:  "#{$font-url}('#{$file-path}.ttf') format('ttf')",
+    svg:  "#{$font-url}('#{$file-path}.svg##{$font-family}') format('svg')"
+  );
+
+  @each $format, $file-path in $formats-map {
+    @if contains($file-formats, $format) {
+      $src: append($src, $file-path, comma);
+    }
+  }
+
+  @return $src;
+}
