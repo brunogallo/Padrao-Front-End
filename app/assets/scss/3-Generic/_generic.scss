@@ -4,3 +4,15 @@
 
 // Normalize.css
 @import "normalize";
+
+// Border box
+*,
+*:before,
+*:after {
+    @include box-sizing(border-box);
+}
+
+// Centered container
+.container{
+	@include center;
+}
