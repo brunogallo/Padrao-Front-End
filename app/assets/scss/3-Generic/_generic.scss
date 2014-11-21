@@ -5,14 +5,18 @@
 // Normalize.css
 @import "normalize";
 
-// Border box
+// border box
 *,
-*:before,
-*:after {
-    @include box-sizing(border-box);
+*:after,
+*:before {
+  @include box-sizing(border-box);
 }
 
-// Centered container
-.container{
-	@include center;
+// links
+a {
+  color: gray;
+  @include transition(color .3s ease);
+  &:hover {
+    color: black;
+  }
 }

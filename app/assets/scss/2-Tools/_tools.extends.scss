@@ -2,17 +2,15 @@
 // Extends
 // ====================================================================
 
+// -------------------------------------
 // Clearfix
-//
-// For modern browsers
-// 1. The space content is one way to avoid an Opera bug when the
-//    contenteditable attribute is included anywhere else in the document.
-//    Otherwise it causes space to appear at the top and bottom of elements
-//    that are clearfixed.
-// 2. The use of `table` rather than `block` is only necessary if using
-//    `:before` to contain the top-margins of child elements.
-//
-// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+//	 
+//	 Usage:
+//	 .article-heading {
+//	   @extend clearfix();
+//	 }
+//	 	 
+// -------------------------------------
 
 %clearfix {
   &:before,
@@ -23,4 +21,43 @@
   &:after {
     clear: both;
   }
+}
+
+
+// -------------------------------------
+// Truncate text
+//	 
+//	 Usage:
+//	 .text-truncate-1 {
+//	   @extend text-truncate;
+//	 }
+//	 
+//	 .text-truncate-2 {
+//	   @extend text-truncate;
+//	 }
+//	 	 
+// -------------------------------------
+
+%text-truncate {
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+}
+
+
+// -------------------------------------
+// Center-align
+//	 
+//	 Usage:
+//	 .footer-wrap {
+//	   width: 450px;
+//	   @extend center-block;
+//	 }
+//	 	 
+// -------------------------------------
+
+%center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
