@@ -391,3 +391,9 @@ $retina-suffix: '@2x';
   -o-transition: $args;
   transition: $args;
 }
+
+// -------------------------------------
+// Jeet Grid 
+// -------------------------------------
+
+@import "vendors/jeet/grid";

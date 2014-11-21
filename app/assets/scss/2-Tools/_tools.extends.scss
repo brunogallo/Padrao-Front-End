@@ -7,7 +7,7 @@
 //	 
 //	 Usage:
 //	 .article-heading {
-//	   @extend clearfix();
+//	   @extend %clearfix;
 //	 }
 //	 	 
 // -------------------------------------
@@ -29,11 +29,11 @@
 //	 
 //	 Usage:
 //	 .text-truncate-1 {
-//	   @extend text-truncate;
+//	   @extend %text-truncate;
 //	 }
 //	 
 //	 .text-truncate-2 {
-//	   @extend text-truncate;
+//	   @extend %text-truncate;
 //	 }
 //	 	 
 // -------------------------------------
@@ -51,7 +51,7 @@
 //	 Usage:
 //	 .footer-wrap {
 //	   width: 450px;
-//	   @extend center-block;
+//	   @extend %center-block;
 //	 }
 //	 	 
 // -------------------------------------
