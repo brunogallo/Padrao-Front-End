@@ -90,11 +90,10 @@ module.exports = function( grunt ) {
 			},
 			sass: {
 				files: ['<%= config.paths.sass %>/**/*'],
-				tasks: ['compass:dev', 'csslint:strict']
+				tasks: ['compass:dev']
 			},
 			js: {
-				files: ['<%= config.paths.js %>/**/*'],
-				tasks: ['jshint:dev']
+				files: ['<%= config.paths.js %>/**/*']
 			}
 		},
 		
@@ -180,7 +179,7 @@ module.exports = function( grunt ) {
 				src: [
 					'*.*',
 					'assets/fonts/**',
-					'assets/js/vendor/*.js'
+					'assets/js/vendor/**/*'
 				],
 				dest: '<%= config.paths.env.dist %>'
 			},
@@ -203,6 +202,7 @@ module.exports = function( grunt ) {
 		    dev: {
 		        bsFiles: {
 		            src : [
+		            	'<%= config.paths.env.dev %>/assets/img/**/*.{png,jpg,gif}',
 		            	'<%= config.paths.env.dev %>/assets/css/**/*.css',
 		            	'<%= config.paths.env.dev %>/assets/js/**/*.js',
 		            	'<%= config.paths.env.dev %>/**/*.html'
@@ -213,31 +213,19 @@ module.exports = function( grunt ) {
 					server: {
 						baseDir: "app/"
 					},
+					ghostMode: {
+	                    scroll: true,
+	                    links: true,
+	                    forms: true,
+	                    clicks: true,
+	                    location: true
+					}
 					// proxy: {
 					// 	host: "192.168.0.11",
 					// 	port: 8000
 					// }
                 }
 		    }
-		},
-		
-		// deploy
-		'ftp-deploy': {
-			dist: {
-				auth: {
-					host: 'ftp.xxx.xxx', // ftp host
-					port: 21,
-					authKey: 'key1' //.ftppass file on the ./
-				},
-				src: '<%= config.paths.env.dev %>',
-				dest: '<%= config.paths.ftp %>', // your remote directory
-				exclusions: [
-					'./**/.*', // all files what begin with dot
-					'./**/Thumbs.db',
-					'./**/README.md',
-					'./**/*.zip'
-				]
-			}
 		},
 		
 		// make a zipfile
@@ -322,7 +310,7 @@ module.exports = function( grunt ) {
 					threshold: 80
 				}
 			}
-		}
+		}		
 	});
 
 	// watch
@@ -331,9 +319,9 @@ module.exports = function( grunt ) {
 	// build
 	grunt.registerTask('dist', ['clean', 'copy', 'concat', 'uncss', 'uglify', 'cssmin', 'imagemin', 'htmlmin']);
 	
-	// deploy
-	grunt.registerTask('deploy', ['ftp-deploy:dist']);
-
+	// test
+	grunt.registerTask('test', ['csslint:dev','jshint:dev']);
+	
 	// compress
 	grunt.registerTask('zip', ['compress:dist','compress:dev','compress:all']);    
 };
