@@ -2,7 +2,7 @@
   "name": "padrao",
   "version": "1.0.0",
   "title": "Padrão Front End",
-  "homepage": "http://www.brunogallo.com",
+  "homepage": "http://www.brunogallo.com.br",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-autoshot": "0.0.2",

@@ -9,37 +9,35 @@ Validar, compilar, minificar, otimizar imagens e enviar tudo isso para o ambient
 **Instalação**
 
 ```sh
-***Clone o repositório***
-$ git clone git://github.com/brunogallo/padrao-front-end.git novo_projeto
-$ cd novo_projeto
+***Instalando GruntJS***
+$ sudo npm install -g grunt-cli
 
-***instale as dependencias***
+***Instalando as dependencias***
+$ cd pasta-projeto
 $ sudo npm install
-$ gem install compass
-$ gem install bourbon
-$ gem install breakpoint
-$ gem install jeet
-```
 
+***Rodando o Grunt***
+$ grunt
+```
 
 **Tasks**
 
-- `grunt dev`: Inicializa browsersync e watch, com inspeção do jshint e csslint.
-- `gulp dist`: Gera o projeto completo para fazer deploy.
-- `gulp deploy`: Realiza deploy.
-- `gulp compress`: Comprime todos os arquivos dev e deploy.
+- `grunt dev`
+- `gulp dist`
+- `gulp deploy`
+- `gulp compress`
 
 
-**Bibliotécas**
+##Mãos a obra!
 
-[Jeet](http://jeet.gs/) - Sistema de Grids.<br>
-[Breakpoints](http://breakpoint-sass.com/) - Media Queries.<br>
-[Compass](http://compass-style.org/index/) - Mixins, Funções e Vars.
+- **[Mixins](docs/mixins.md)**
+- **[Funções](docs/funcoes.md)**
+- **[Extends](docs/extends.md)**
 
 
 ## Otimizar imagens
 
-Uma dica importante é utilizar **.jpgs** com **1.5x** o tamanho a ser mostrado, com **65-75% de qualidade**, **progressivos e otimizados com um algoritmo lossless**. 
+Uma dica importante é utilizar **.jpgs** com **1.5x** o tamanho a ser mostrado, com **65-75% de qualidade**, **progressivos e otimizados com um algoritmo lossless**.
 
 
 ## Otimizar servidor
@@ -64,17 +62,6 @@ Please, follow [Hosting a Static Website on Amazon S3][4] guide on the AWS S3 do
 [7]: https://github.com/h5bp/server-configs-nginx
 [8]: https://github.com/h5bp/server-configs-node
 [9]: http://html5boilerplate.com/
-
-
-## Contribua
-
-####Você pode contribuir
-
-1. Crie um fork!
-2. Crie uma branch para a sua nova funcionalidae: `git checkout -b nova-funcionalidade`
-3. Dê Commit com as suas modificações: `git commit -m 'Nova funcionalidade'`
-4. Dê Push na branch: `git push origin nova-funcionalidade`
-5. Envie um pull request
 
 
 ## Licença

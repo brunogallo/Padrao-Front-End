@@ -5,64 +5,18 @@
 // -------------------------------------
 // Base Colors
 // -------------------------------------
-
-$base-color : #1b2026;
-
-$white : #fff;
-$black : #000;
-$grey  : #ccc;
+$font-color : #111;
+$bg-color   : #333;
 
 // -------------------------------------
-// Flat UI Colors
+// Layout Colors
 // -------------------------------------
-
-$gold			: #b4ad82;
-$blue-silver	: #2b333a;
-$blue-black		: #1b2026;
 
 // -------------------------------------
 // Events Colors
 // -------------------------------------
-
 $color-default : #95a5a6;
 $color-alert   : #f1c40f;
 $color-success : #2ecc71;
 $color-warning : #e74c3c;
 $color-info    : #3498db;
-
-$color-primary   : #b4ad82;
-$color-secondary : #2b333a;
-$color-accent    : #1b2026;
-$color-shadow    : #2b333a;
-
-// -------------------------------------
-// UI Themes Colors
-// -------------------------------------
-
-$ui-colors : (
-  "gold"			: $gold,
-  "blue-silver"		: $blue-silver,
-  "black-silver"	: $black-silver
-);
-
-$events-colors : (
- "default" : $color-default,
- "alert"   : $color-alert,
- "success" : $color-success,
- "warning" : $color-warning,
- "info"    : $color-info
-);
-
-// -------------------------------------
-// Color Palette Modifiers
-// -------------------------------------
-
-$color-palettes : (
-  grey: (
-    "x-light"  : lighten($silver, 25%),
-    "light"    : lighten($silver, 10%),
-    "base"     : $silver,
-    "dark"     : darken($silver, 10%),
-    "x-dark"   : darken($silver, 25%)
-  )
-);

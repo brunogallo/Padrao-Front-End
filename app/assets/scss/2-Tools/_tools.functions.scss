@@ -6,7 +6,6 @@
 // -------------------------------------
 // Import if Fonts URL is defined
 // -------------------------------------
-
 @if variable-exists(font-url) {
   @import url($font-url);
 }
@@ -15,7 +14,6 @@
 // -------------------------------------
 // Calculate REM values
 // -------------------------------------
-
 @function rem($pxval) {
   @if not unitless($pxval) {
       $pxval: strip-units($pxval);
@@ -51,10 +49,3 @@
 @function strip-units($val) {
   @return ($val / ($val * 0 + 1));
 }
-
-
-// -------------------------------------
-// Jeet Grid
-// -------------------------------------
-
-@import "vendors/jeet/functions";

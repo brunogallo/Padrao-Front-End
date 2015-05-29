@@ -4,12 +4,12 @@
 
 // -------------------------------------
 // Clearfix
-//	 
+//
 //	 Usage:
 //	 .article-heading {
 //	   @extend %clearfix;
 //	 }
-//	 	 
+//
 // -------------------------------------
 
 %clearfix {
@@ -26,16 +26,16 @@
 
 // -------------------------------------
 // Truncate text
-//	 
+//
 //	 Usage:
 //	 .text-truncate-1 {
 //	   @extend %text-truncate;
 //	 }
-//	 
+//
 //	 .text-truncate-2 {
 //	   @extend %text-truncate;
 //	 }
-//	 	 
+//
 // -------------------------------------
 
 %text-truncate {
@@ -47,17 +47,39 @@
 
 // -------------------------------------
 // Center-align
-//	 
+//
 //	 Usage:
 //	 .footer-wrap {
 //	   width: 450px;
 //	   @extend %center-block;
 //	 }
-//	 	 
+//
 // -------------------------------------
 
 %center-block {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+
+// -------------------------------------
+// Hidden
+//
+//	 Usage:
+//	 .element {
+//	   @extend %hidden;
+//	 }
+//
+// -------------------------------------
+
+%hidden {
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
 }
