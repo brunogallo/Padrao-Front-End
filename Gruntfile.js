@@ -4,25 +4,26 @@ module.exports = function( grunt ) {
 
 	// time of tasks
 	require('time-grunt')(grunt);
-	
+
 	// Load all tasks
 	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
 	grunt.initConfig({
 		// importa package manifest - informações
 		pkg: grunt.file.readJSON('package.json'),
-  		
+
 		// config
 		config: {
+
 			// Caminhos padrões
 			paths: {
-	            sass:   	'app/assets/scss',
-	            js:     	'app/assets/js',
-		        ftp: 		'www',
-	            env: {
-	                dev: 	'app',
-	                dist: 	'dist'
-	            }
+	            sass	:   	'app/assets/scss',
+	            js		:     'app/assets/js',
+			        ftp		: 		'www',
+		          env		: 		{
+		            						dev		: 	'app',
+		            						dist	: 	'dist'
+		          						}
 			},
 			meta: {
 				banner: '/*\n' +
@@ -33,8 +34,7 @@ module.exports = function( grunt ) {
 				' *  Made by <%= pkg.author.name %>\n' +
 				' */\n'
 			}
-        },
-		
+    },
 		// cssmin
 		cssmin: {
 			dist: {
@@ -46,7 +46,12 @@ module.exports = function( grunt ) {
 				]
 			}
 		},
-		
+
+		// exec commands
+		exec: {
+		    cmd: 'npm install && bower install && grunt dev'
+		},
+
 		// uncss
 		uncss: {
 		    options: {
@@ -59,7 +64,7 @@ module.exports = function( grunt ) {
 				}
 			}
 		},
-		
+
 		// css lint
 		csslint: {
 			dev: {
@@ -69,20 +74,20 @@ module.exports = function( grunt ) {
 				src: ['<%= config.paths.env.dev %>/assets/css/**/*']
 			}
 		},
-		
+
 		// compile scss
 		compass: {
-			dev: { 
-				options: { 
+			dev: {
+				options: {
 					config: 'config.rb',
 					sassDir: '<%= config.paths.sass %>',
 					cssDir: '<%= config.paths.env.dev %>/assets/css',
                     outputStyle: 'compact',
-                    noLineComments: false
+                    noLineComments: true
 				}
 			}
 		},
-		
+
 		// watch
 		watch: {
 			options: {
@@ -91,16 +96,13 @@ module.exports = function( grunt ) {
 			sass: {
 				files: ['<%= config.paths.sass %>/**/*'],
 				tasks: ['compass:dev']
-			},
-			js: {
-				files: ['<%= config.paths.js %>/**/*']
 			}
 		},
-		
+
 		// concat
 		concat: {
 			js: {
-				src: ['<%= config.paths.env.dev %>/assets/js/*.js'],
+				src: ['<%= config.paths.env.dev %>/assets/js/**/*.js'],
 				dest: '<%= config.paths.env.dist %>/assets/js/main.js'
 			},
 			css: {
@@ -108,7 +110,7 @@ module.exports = function( grunt ) {
 				dest: '<%= config.paths.env.dist %>/assets/css/main.css'
 			}
 		},
-		
+
 		// jshint
 		jshint: {
 			dev: {
@@ -117,8 +119,8 @@ module.exports = function( grunt ) {
 			beforeconcat: ['<%= config.paths.env.dev %>/assets/js/**/*.js'],
 			afterconcat: ['<%= config.paths.env.dist %>/assets/js/main.js']
 		},
-		
-        // uglify
+
+    // uglify
 		uglify: {
 			dist: {
 				files: [{
@@ -131,21 +133,23 @@ module.exports = function( grunt ) {
 		},
 
 		//imagemin
-	    imagemin: {
+    imagemin: {
 			options: {
-			    optimizationLevel: 7,
-			    progressive: true
+		    optimizationLevel: 7,
+		    progressive: true
 			},
-	        dist: {
-	            files: [{
-	            	expand: true,
-	            	cwd: '<%= config.paths.env.dev %>/assets/img/',
-	            	src: ['**/*.png','**/*.jpg','**/*.jpeg','**/*.gif'],
-	            	dest: '<%= config.paths.env.dist %>/assets/img'
-	            }]
+	    dist: {
+        files: [
+					{
+	        	expand: true,
+	        	cwd: '<%= config.paths.env.dev %>/assets/img/**/',
+	        	src: ['**/*.png','**/*.jpg','**/*.jpeg','**/*.gif'],
+	        	dest: '<%= config.paths.env.dist %>/assets/img'
 	        }
-	    }, 
-	    
+				]
+	    }
+    },
+
 		//htmlmin
 		htmlmin: {
 			options: {
@@ -179,150 +183,53 @@ module.exports = function( grunt ) {
 				src: [
 					'*.*',
 					'assets/fonts/**',
-					'assets/js/vendor/**/*'
+					'assets/videos/**'
 				],
 				dest: '<%= config.paths.env.dist %>'
 			},
 		},
 
 		// clean
-		clean: {	
+		clean: {
 			dist: {
 				src: ['<%= config.paths.env.dist %>']
 			}
 		},
-		
-		// exec commands
-		exec: {
-		    cmd: 'npm install && bower install && grunt dev'
-		},
-		
-		// keep multiple browsers & devices in sync when building websites.
+
+		// browserSync
 		browserSync: {
-		    dev: {
-		        bsFiles: {
-		            src : [
-		            	'<%= config.paths.env.dev %>/assets/img/**/*.{png,jpg,gif}',
-		            	'<%= config.paths.env.dev %>/assets/css/**/*.css',
-		            	'<%= config.paths.env.dev %>/assets/js/**/*.js',
-		            	'<%= config.paths.env.dev %>/**/*.html'
-		            ]
-		        },
-		        options: {
-                    watchTask: true,
+	    dev: {
+        bsFiles: {
+          src : [
+          	'<%= config.paths.env.dev %>/assets/img/**/*.{png,jpg,gif}',
+          	'<%= config.paths.env.dev %>/assets/css/**/*.css',
+          	'<%= config.paths.env.dev %>/assets/js/**/*.js',
+          	'<%= config.paths.env.dev %>/**/*.html'
+          ]
+        },
+        options: {
+          watchTask: true,
 					server: {
 						baseDir: "app/"
 					},
 					ghostMode: {
-	                    scroll: true,
-	                    links: true,
-	                    forms: true,
-	                    clicks: true,
-	                    location: true
+            scroll: true,
+            links: true,
+            forms: true,
+            clicks: true,
+            location: true
 					}
-					// proxy: {
-					// 	host: "192.168.0.11",
-					// 	port: 8000
-					// }
-                }
-		    }
-		},
-		
-		// make a zipfile
-		compress: {
-			all: {
-				options: {
-					archive: 'all.zip'
-				},
-				files: [
-					{ 
-						expand: true, cwd: './', src: ['./**'], dest: '' 
-					},
-				]
-			},
-			dist: {
-				options: {
-					archive: '<%= config.paths.env.dist %>.zip'
-				},
-				files: [
-					{ 
-						expand: true, cwd: './', src: ['<%= config.paths.env.dist %>/**'], dest: '' 
-					},
-				]
-			},
-			dev: {
-				options: {
-					archive: 'dev.zip'
-				},
-				files: [
-					{ 
-						expand: true, cwd: './', src: ['<%= config.paths.env.dev %>/**'], dest: '' 
-					},
-				]
-			}
-		},
-		
-		// autoshot
-		autoshot: {
-			default_options: {
-				options: {
-					// necessary config
-					path: '<%= config.paths.env.dev %>/screenshots',
-					filename: 'screenshot',
-					type: 'jpg',
-					// optional config, must set either remote or local
-					remote: {
-						files: [
-							{ src: 'http://www.globo.com', dest: 'remote-screenshot.png', delay: 800 }
-						]
-					},
-					local: {
-						path: '<%= config.paths.env.dev %>',
-						port: 7788,
-						files: [
-							{ src: 'index.html', dest: 'local-screenshot.png', delay: 800 }
-						]
-					},
-					viewport: ['1920x1080','1280x1024','1024x768','768x960','480x600','320x500'] 
-				},
-			},
-		},
-
-		// pagespeed
-		pagespeed: {
-			options: {
-				nokey: true,
-				url: "https://developers.google.com"
-			},
-			dist: {
-				options: {
-					url: "http://developers.google.com/speed/docs/insights/v1/getting_started",
-					locale: "en_GB",
-					strategy: "desktop",
-					threshold: 80
-				}
-			},
-			dev: {
-				options: {
-					paths: ["/speed/docs/insights/v1/getting_started", "/speed/docs/about"],
-					locale: "en_GB",
-					strategy: "desktop",
-					threshold: 80
-				}
-			}
-		}		
+        }
+	    }
+		}
 	});
 
 	// watch
-	grunt.registerTask('dev', ['browserSync', 'watch']);
+	grunt.registerTask('dev', ['watch', 'browserSync']);
 
 	// build
-	grunt.registerTask('dist', ['clean', 'copy', 'concat', 'uncss', 'uglify', 'cssmin', 'imagemin', 'htmlmin']);
-	
+	grunt.registerTask('dist', ['clean', 'copy', 'concat', 'uglify', 'cssmin', 'imagemin']);
+
 	// test
 	grunt.registerTask('test', ['csslint:dev','jshint:dev']);
-	
-	// compress
-	grunt.registerTask('zip', ['compress:dist','compress:dev','compress:all']);    
 };
-		
