@@ -37,8 +37,9 @@ $ grunt
 
 ## Otimizar imagens
 
-Uma dica importante é utilizar **.jpgs** com **1.5x** o tamanho a ser mostrado, com **65-75% de qualidade**, **progressivos e otimizados com um algoritmo lossless**.
-
+- Utilizar **.jpgs** com **1.5x** o tamanho a ser mostrado, com **65-75% de qualidade**, **progressivos e otimizados com um algoritmo lossless**.
+- Utilizar base64 em imagens repetitivas, como por ex.: Ícones. `background-image: inline-image('imagem.png');
+`
 
 ## Otimizar servidor
 
