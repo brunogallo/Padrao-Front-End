@@ -225,7 +225,7 @@ module.exports = function( grunt ) {
 	});
 
 	// watch
-	grunt.registerTask('dev', ['watch', 'browserSync']);
+	grunt.registerTask('dev', ['browserSync', 'watch']);
 
 	// build
 	grunt.registerTask('dist', ['clean', 'copy', 'concat', 'uglify', 'cssmin', 'imagemin']);
