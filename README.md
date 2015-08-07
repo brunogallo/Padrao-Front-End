@@ -23,9 +23,9 @@ $ grunt
 **Tasks**
 
 - `grunt dev`
-- `gulp dist`
-- `gulp deploy`
-- `gulp compress`
+- `grunt dist`
+- `grunt deploy`
+- `grunt compress`
 
 
 ##Mãos a obra!
