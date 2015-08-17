@@ -1,18 +1,18 @@
 // ====================================================================
-// Configurações
+// SETTINGS
 // ====================================================================
 
 // -------------------------------------
 // Fonts
 // -------------------------------------
-//Google Fonts
-$font-url = "http://fonts.googleapis.com/css?family=Rokkitt:400,700"
 
-//Fonts locais
-$sans-serif = "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
-$serif = Georgia, Cambria, "Times New Roman", Times, serif
-$monospace = Consolas, "Liberation Mono", Courier, monospace
+//Web Fonts
+$arial = Arial, 'Helvetica Neue', Helvetica, sans-serif;
 
+//font-face
+$fontExemple = font-face('FontName', '/fonts/font-name', 'bold', 'italic')
+
+$base--font-family = $arial
 // -------------------------------------
 // Font Weights
 // -------------------------------------
@@ -22,24 +22,13 @@ $medium = 400
 $bold = 700
 $bolder = 900
 
+$base--font-weight = $medium
 // -------------------------------------
-// Base
+// Font Style (Normal, Italic or Oblique).
 // -------------------------------------
-$em-base = 16px
+$base--font-style = Normal
 
 // -------------------------------------
-// Body
+// Base Font
 // -------------------------------------
-$bg = $bg-color
-$font-color = $font-color
-$font-family = $sans-serif
-$font-weight = $medium
-$font-style = normal
-
-// -------------------------------------
-// Grid config
-// -------------------------------------
-$jeet-gutter = 3
-$jeet-parent-first = false
-$jeet-layout-direction = "LTR"
-$jeet-max-width = 960px
+$base--font-size = 16px

@@ -8,6 +8,7 @@ var stylus      = require('gulp-stylus');
 var uglify      = require('gulp-uglify');
 var concat      = require('gulp-concat');
 var watch       = require("gulp-watch");
+var combineMq   = require('gulp-combine-mq');
 var browserSync = require('browser-sync').create();
 var reload      = browserSync.reload;
 
@@ -50,15 +51,25 @@ gulp.task('scripts', function() {
 // reloading browsers
 gulp.task('jsReload', ['scripts'], browserSync.reload);
 
+// Combine all media queries
+gulp.task('combineMq', function () {
+    return gulp.src('app/dev/assets/css/main.css')
+    .pipe(combineMq({
+        beautify: false
+    }))
+    .pipe(gulp.dest('app/dev/assets/css/main.css'));
+});
+
 // Watch
 gulp.task('watch', function() {
   gulp.watch(paths.js+'/**/*.js', ['scripts']);
   gulp.watch(paths.stylus+'/**/*.styl', ['stylus']);
+  gulp.watch('app/dev/assets/css/main.css', ['combineMq']);
   gulp.watch(paths.dev+'/*.html').on('change', browserSync.reload);
 });
 
 //taks to run
-gulp.task('dev', ['stylus', 'scripts', 'browser-sync', 'watch']);
+gulp.task('dev', ['stylus', 'combineMq', 'scripts', 'browser-sync', 'watch']);
 
 
 
